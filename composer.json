@@ -6,16 +6,19 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.2",
+        "symfony/asset": "4.2.*",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.2.*",
         "symfony/profiler-pack": "^1.0",
         "symfony/twig-bundle": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
-        "phpspec/phpspec": "^4.0"
+        "phpspec/phpspec": "^4.0",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "config": {
         "preferred-install": {
@@ -25,12 +28,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Kachuru\\": "src/Kachuru/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "spec\\Kachuru\\": "spec/Kachuru/"
         }
     },
     "replace": {
@@ -42,7 +47,19 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "sniff": "vendor/bin/phpcs --standard=PSR2",
+        "spec": [
+            "vendor/bin/phpspec run"
+        ],
+        "sniff": [
+            "vendor/bin/phpcs --standard=PSR2 src/"
+        ],
+        "fix": [
+            "vendor/bin/phpcbf --standard=PSR2 src/"
+        ],
+        "test": [
+            "@sniff",
+            "@spec"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -59,6 +76,7 @@
     },
     "extra": {
         "symfony-web-dir": "web",
+        "public-dir": "web",
         "symfony": {
             "allow-contrib": false,
             "require": "4.2.*"

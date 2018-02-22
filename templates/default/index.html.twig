@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    @import url({{ asset('/assets/css/index.css') }});
+{% endblock %}
+
 {% block body %}
-<h1>Page One</h1>
+
+    <h1>Zone</h1>
+
+    <div class="map">
+        <iframe class="map" src="/map"></iframe>
+    </div>
+
 {% endblock %}

@@ -1,0 +1,16 @@
+body {
+    background-color: #eee;
+}
+
+div.map {
+    height: 100%;
+    position: absolute;
+    left: 33%;
+    top: 10px;
+    border: 1px #f00;
+}
+
+iframe.map {
+    width: 600px;
+    height: 600px;
+}
