@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="assets/css/map-large.css"/>
+</head>
+
+<body>
+
+<div id="map">
+
+    <?php
+    $tileHtml = <<<HTML
+    <div id="t%d-outer" class="tile-outer tile-%s" style="left: %dpx; top: %dpx;">
+    <div id="t%d-inner" class="tile-inner" onClick="alert('T%d')">T%d</div>
+</div>
+HTML;
+
+(new MapDisplay($tileHtml))
+->render(272);
+
+?>
+
+</div>
+
+</body>
