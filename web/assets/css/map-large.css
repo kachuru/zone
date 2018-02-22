@@ -1,0 +1,40 @@
+body {
+    background-color: #eef;
+}
+
+div.map {
+    position: relative;
+}
+
+div.tile-outer {
+    height: 77px;
+    width: 91px;
+    position: absolute;
+}
+
+div.tile-outer_small {
+    height: 77px;
+    width: 91px;
+    position: absolute;
+}
+
+div.tile-inner {
+    height: 77px;
+    width: 50px;
+    margin: auto;
+    line-height: 38px;
+    text-align: center;
+    cursor: hand;
+}
+
+div.tile-water {
+    background: url(../images/tiles.png) 0 0;
+}
+
+div.tile-barren {
+    background: url(../images/tiles.png) -182px 0;
+}
+
+div.tile-clear {
+    background: url(../images/tiles.png) -91px 0;
+}

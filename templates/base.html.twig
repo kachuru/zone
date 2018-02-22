@@ -2,8 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Zone{% endblock %}</title>
+        <style type="text/css">
+            @import url({{ asset('/assets/css/base.css') }});
+        {% block stylesheets %}
+        {% endblock %}
+        </style>
     </head>
     <body>
         {% block body %}{% endblock %}
