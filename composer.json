@@ -9,5 +9,8 @@
         "psr-4": {
             "": "src/"
         }
+    },
+    "extra": {
+        "symfony-web-dir": "web"
     }
 }
