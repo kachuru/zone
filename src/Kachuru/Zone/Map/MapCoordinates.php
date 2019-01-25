@@ -27,4 +27,14 @@ class MapCoordinates
     {
         return $this->degree;
     }
+
+    public function getX(): int
+    {
+        return $this->radial;
+    }
+
+    public function getY(): int
+    {
+        return $this->degree;
+    }
 }

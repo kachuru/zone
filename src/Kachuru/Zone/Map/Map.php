@@ -4,7 +4,7 @@ namespace Kachuru\Zone\Map;
 
 interface Map
 {
-    public function getMapTiles(): array;
+    public function getMapTiles(): iterable;
 
     public function getMapTileById(string $tileId): MapTile;
 

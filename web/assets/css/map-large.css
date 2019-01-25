@@ -1,10 +1,11 @@
 body {
     font-family: sans-serif;
     font-size: 5pt;
+    padding: 10px;
 }
 
 div#map {
-    float: left;
+    position: relative;
     padding: 10px;
 }
 
@@ -21,15 +22,6 @@ div.tile-outer_small {
 }
 
 div.tile-inner {
-    height: 77px;
-    width: 50px;
-    margin: auto;
-    line-height: 6.4;
-    text-align: center;
-    cursor: hand;
-}
-
-div.tile-inner_small {
     height: 77px;
     width: 50px;
     margin: auto;

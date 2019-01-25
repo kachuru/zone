@@ -27,3 +27,15 @@ services:
     # please note that last definitions always *replace* previous ones
     Kachuru\:
         resource: '../src/Kachuru/*'
+
+    Kachuru\Zone\Map\MapSize:
+        class: Kachuru\Zone\Map\MapSize
+        arguments:
+            - 40
+            - 30
+
+    Kachuru\Zone\Map\Twig\TilePosition:
+        class: Kachuru\Zone\Map\Twig\TilePosition
+        arguments:
+            - 67
+            - 76
