@@ -31,11 +31,16 @@ services:
     Kachuru\Zone\Map\MapSize:
         class: Kachuru\Zone\Map\MapSize
         arguments:
-            - 40
-            - 30
+            - 80
+            - 60
 
     Kachuru\Zone\Map\Twig\TilePosition:
         class: Kachuru\Zone\Map\Twig\TilePosition
         arguments:
             - 67
             - 76
+
+    Kachuru\Zone\Map\MapTileFactory:
+        class: Kachuru\Zone\Map\MapTileFactory
+        arguments:
+            - 'T%d'

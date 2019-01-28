@@ -13,11 +13,16 @@ class MapTileFactory
 
     public function createTile(int $tileNumber, MapCoordinates $mapCoordinates): MapTile
     {
-        return new MapTile(sprintf($this->idFormat, $tileNumber), $mapCoordinates);
+        return new MapTile($this->generateId($tileNumber), $mapCoordinates);
     }
 
     public function createMapCoordinates(int $radial, int $degree): MapCoordinates
     {
         return new MapCoordinates($radial, $degree);
+    }
+
+    protected function generateId(int $tileNumber): string
+    {
+        return sprintf($this->idFormat, $tileNumber);
     }
 }
