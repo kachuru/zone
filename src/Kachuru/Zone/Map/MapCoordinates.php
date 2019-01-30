@@ -4,37 +4,27 @@ namespace Kachuru\Zone\Map;
 
 class MapCoordinates
 {
-    private $radial;
-    private $degree;
+    private $x;
+    private $y;
 
-    public function __construct(int $radial, int $degree)
+    public function __construct(int $x, int $y)
     {
-        $this->radial = $radial;
-        $this->degree = $degree;
+        $this->x = $x;
+        $this->y = $y;
     }
 
     public function __toString(): string
     {
-        return sprintf('%d:%d', $this->radial, $this->degree);
-    }
-
-    public function getRadial(): int
-    {
-        return $this->radial;
-    }
-
-    public function getDegree(): int
-    {
-        return $this->degree;
+        return sprintf('%d:%d', $this->x, $this->y);
     }
 
     public function getX(): int
     {
-        return $this->radial;
+        return $this->x;
     }
 
     public function getY(): int
     {
-        return $this->degree;
+        return $this->y;
     }
 }

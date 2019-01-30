@@ -8,13 +8,13 @@ class MapTile
 
     private $mapCoordinates;
 
-    public function __construct(string $tileId, MapCoordinates $mapCoordinates)
+    public function __construct(int $tileId, MapCoordinates $mapCoordinates)
     {
         $this->tileId = $tileId;
         $this->mapCoordinates = $mapCoordinates;
     }
 
-    public function getTileId(): string
+    public function getTileId(): int
     {
         return $this->tileId;
     }

@@ -22,4 +22,9 @@ class MapSize
     {
         return $this->ySize;
     }
+
+    public function getSize(): int
+    {
+        return $this->xSize * $this->ySize;
+    }
 }

@@ -11,8 +11,11 @@ class MapTileSpec extends ObjectBehavior
 {
     function it_is_a_map_tile()
     {
-        $this->beConstructedWith('T1', new MapCoordinates(1, 1));
+        $coordinates = new MapCoordinates(1, 1);
 
-        $this->getTileId()->shouldReturn('T1');
+        $this->beConstructedWith(1, $coordinates);
+
+        $this->getTileId()->shouldReturn(1);
+        $this->getCoordinates()->shouldReturn($coordinates);
     }
 }

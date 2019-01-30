@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    font-size: 5pt;
+    font-size: 10px;
     padding: 10px;
 }
 
@@ -25,7 +25,7 @@ div.tile-inner {
     height: 77px;
     width: 50px;
     margin: auto;
-    line-height: 6.4;
+    line-height: 38px;
     text-align: center;
     cursor: hand;
 }
