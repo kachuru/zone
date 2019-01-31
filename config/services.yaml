@@ -39,8 +39,3 @@ services:
         arguments:
             - 67
             - 76
-
-    Kachuru\Zone\Map\MapTileFactory:
-        class: Kachuru\Zone\Map\MapTileFactory
-        arguments:
-            - 'T%d'

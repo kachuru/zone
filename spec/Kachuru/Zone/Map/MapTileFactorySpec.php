@@ -16,4 +16,10 @@ class MapTileFactorySpec extends ObjectBehavior
         $this->createTile(2, new MapCoordinates(1, 2))->shouldBeLike(new MapTile('2', new MapCoordinates(1, 2)));
         $this->createTile(3, new MapCoordinates(1, 3))->shouldBeLike(new MapTile('3', new MapCoordinates(1, 3)));
     }
+
+    function it_makes_map_coordinates()
+    {
+        $this->createMapCoordinates(1, 1)->shouldBeLike(new MapCoordinates(1, 1));
+        $this->createMapCoordinates(4, 7)->shouldBeLike(new MapCoordinates(4, 7));
+    }
 }
