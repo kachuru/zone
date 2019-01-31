@@ -85,6 +85,27 @@ class MapStencilSpec extends ObjectBehavior
         );
     }
 
+    function it_returns_the_correct_adjacent_tiles_on_a_bigger_map()
+    {
+        $this->beConstructedWith(
+            new MapSize(80, 60),
+            new MapTileFactory()
+        );
+
+        $this->getAdjacentTiles(new MapCoordinates(15, 20))->shouldIterateLike(
+            new \ArrayIterator(
+                [
+                    $this->makeTile(1535, 15, 19),
+                    $this->makeTile(1616, 16, 20),
+                    $this->makeTile(1696, 16, 21),
+                    $this->makeTile(1695, 15, 21),
+                    $this->makeTile(1694, 14, 21),
+                    $this->makeTile(1614, 14, 20),
+                ]
+            )
+        );
+    }
+
     private function makeTile($id, $x, $y): MapTile
     {
         return new MapTile($id, new MapCoordinates($x, $y));

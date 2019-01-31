@@ -23,7 +23,15 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/index.html.twig');
+    }
+
+    /**
+     * @Route("/map");
+     */
+    public function map()
+    {
+        return $this->render('default/map.html.twig', [
             'map' => $this->map
         ]);
     }

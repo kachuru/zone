@@ -34,8 +34,8 @@ services:
             - 80
             - 60
 
-    Kachuru\Zone\Map\Twig\TilePosition:
-        class: Kachuru\Zone\Map\Twig\TilePosition
+    Kachuru\Twig\Zone\Map\TilePosition:
+        class: Kachuru\Twig\Zone\Map\TilePosition
         arguments:
             - 67
             - 76

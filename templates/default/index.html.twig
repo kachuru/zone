@@ -1,18 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    @import url({{ asset('/assets/css/index.css') }});
+{% endblock %}
+
 {% block body %}
 
-    <div class="map">
-{% for tile in map.mapTiles %}
-        <div id="t{{ tile.tileId }}-outer" class="tile-outer tile-clear"
-             style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
+    <h1>Zone</h1>
 
-            <div id="{{ tile.tileId }}-inner" class="tile-inner" onClick="alert('{{ tile.tileId }} - {{ tile.coordinates }}')">
-                <a name="{{ tile.tileId }}">{{ tile.tileId }}</a><br />
-                {{ tile.coordinates }}
-            </div>
-        </div>
-{% endfor %}
+    <div class="map">
+        <iframe class="map" src="/map"></iframe>
     </div>
 
 {% endblock %}

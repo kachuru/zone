@@ -1,6 +1,6 @@
 <?php
 
-namespace Kachuru\Zone\Map\Twig;
+namespace Kachuru\Twig\Zone\Map;
 
 use Kachuru\Zone\Map\MapCoordinates;
 use Twig\Extension\RuntimeExtensionInterface;

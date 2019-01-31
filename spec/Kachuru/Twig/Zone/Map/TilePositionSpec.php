@@ -3,7 +3,7 @@
 namespace spec\Kachuru\Zone\Map\Twig;
 
 use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\Twig\TilePosition;
+use Kachuru\Twig\Zone\Map\TilePosition;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

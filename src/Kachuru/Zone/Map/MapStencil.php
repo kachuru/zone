@@ -37,11 +37,7 @@ class MapStencil implements Map
 
     public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable
     {
-        $adjustments = $mapCoordinates->getX() % 2 == 0
-            ? self::ADJACENT_COORDINATE_ADJUSTMENTS_EVEN
-            : self::ADJACENT_COORDINATE_ADJUSTMENTS_ODD;
-
-        foreach ($adjustments as $coordinateAdjustment) {
+        foreach ($this->getAdjustmentList($mapCoordinates) as $coordinateAdjustment) {
             yield $this->getMapTileByCoordinates(
                 $this->mapTileFactory->createMapCoordinates(
                     $mapCoordinates->getX() + $coordinateAdjustment[0],
@@ -62,5 +58,12 @@ class MapStencil implements Map
     private function getTileIdFromCoordinates(MapCoordinates $mapCoordinates): int
     {
         return $mapCoordinates->getY() * $this->mapSize->getXSize() + $mapCoordinates->getX();
+    }
+
+    private function getAdjustmentList(MapCoordinates $mapCoordinates): array
+    {
+        return $mapCoordinates->getX() % 2 == 0
+            ? self::ADJACENT_COORDINATE_ADJUSTMENTS_EVEN
+            : self::ADJACENT_COORDINATE_ADJUSTMENTS_ODD;
     }
 }
