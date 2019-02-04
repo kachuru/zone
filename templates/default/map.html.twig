@@ -11,7 +11,8 @@
         <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-clear"
              style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
 
-            <div id="{{ tile.tileId }}-inner" class="tile-inner" onClick="alert('T{{ tile.tileId }} - {{ tile.coordinates }}')">
+            <div id="{{ tile.tileId }}-inner" class="tile-inner"
+                 onClick="alert('T{{ tile.tileId }} - {{ tile.coordinates }}')">
                 <a name="{{ tile.tileId }}">T{{ tile.tileId }}</a><br />
                 {{ tile.coordinates }}
             </div>
