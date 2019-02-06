@@ -47,6 +47,17 @@ class MapStencil implements Map
         }
     }
 
+
+    public function getCentreTile()
+    {
+        return $this->getMapTileByCoordinates(
+            $this->mapTileFactory->createMapCoordinates(
+                floor(($this->mapSize->getXSize() - 1) / 2),
+                floor(($this->mapSize->getYSize() - 1) / 2)
+            )
+        );
+    }
+
     private function getCoordinatesFromTileId(int $tileId): MapCoordinates
     {
         return $this->mapTileFactory->createMapCoordinates(

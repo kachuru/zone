@@ -106,6 +106,21 @@ class MapStencilSpec extends ObjectBehavior
         );
     }
 
+    function it_returns_the_correct_centre_tile()
+    {
+        $this->getCentreTile()->shouldBeLike($this->makeTile(5, 1, 1));
+    }
+
+    function it_returns_the_correct_centre_tile_again()
+    {
+        $this->beConstructedWith(
+            new MapSize(5, 5),
+            new MapTileFactory()
+        );
+
+        $this->getCentreTile()->shouldBeLike($this->makeTile(12, 2, 2));
+    }
+
     private function makeTile($id, $x, $y): MapTile
     {
         return new MapTile($id, new MapCoordinates($x, $y));
