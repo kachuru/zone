@@ -1,0 +1,60 @@
+div.tile-state-alpha {
+    background: url(../images/hexagons.png) -88px 0;
+}
+
+div.tile-state-beta {
+    background: url(../images/hexagons.png) -88px -80px;
+}
+
+div.tile-state-gamma {
+    background: url(../images/hexagons.png) -176px 0;
+}
+
+div.tile-state-delta {
+    background: url(../images/hexagons.png) -176px -80px;
+}
+
+div.ant {
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    width: 42px;
+    height: 65px;
+    background: url(../images/ant.png) 0 0;
+    z-index: 1;
+}
+
+div#ant-location {
+    float: left;
+    display: none;
+}
+
+div.ant-orient-n {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+div.ant-orient-ne {
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+div.ant-orient-se {
+    -webkit-transform: rotate(120deg);
+    transform: rotate(120deg);
+}
+
+div.ant-orient-s {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+div.ant-orient-sw {
+    -webkit-transform: rotate(240deg);
+    transform: rotate(240deg);
+}
+
+div.ant-orient-nw {
+    -webkit-transform: rotate(300deg);
+    transform: rotate(300deg);
+}
