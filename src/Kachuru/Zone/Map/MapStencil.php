@@ -4,9 +4,23 @@ namespace Kachuru\Zone\Map;
 
 class MapStencil implements Map
 {
-    private const ADJACENT_COORDINATE_ADJUSTMENTS_EVEN = [[0, -1], [1, -1], [1, 0], [0, 1], [-1, 0], [-1, -1]];
+    private const ADJACENT_COORDINATE_ADJUSTMENTS_EVEN = [
+        Map::DIRECTION_NORTH => [0, -1],
+        Map::DIRECTION_NORTHEAST => [1, -1],
+        Map::DIRECTION_SOUTHEAST => [1, 0],
+        Map::DIRECTION_SOUTH => [0, 1],
+        Map::DIRECTION_SOUTHWEST => [-1, 0],
+        Map::DIRECTION_NORTHWEST => [-1, -1]
+    ];
 
-    private const ADJACENT_COORDINATE_ADJUSTMENTS_ODD = [[0, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]];
+    private const ADJACENT_COORDINATE_ADJUSTMENTS_ODD = [
+        Map::DIRECTION_NORTH => [0, -1],
+        Map::DIRECTION_NORTHEAST => [1, 0],
+        Map::DIRECTION_SOUTHEAST => [1, 1],
+        Map::DIRECTION_SOUTH => [0, 1],
+        Map::DIRECTION_SOUTHWEST => [-1, 1],
+        Map::DIRECTION_NORTHWEST => [-1, 0]
+    ];
 
     private $mapSize;
 
@@ -47,8 +61,19 @@ class MapStencil implements Map
         }
     }
 
+    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile
+    {
+        $adjustment = $this->getAdjustmentList($mapCoordinates)[$direction];
 
-    public function getCentreTile()
+        return $this->getMapTileByCoordinates(
+            $this->mapTileFactory->createMapCoordinates(
+                $mapCoordinates->getX() + $adjustment[0],
+                $mapCoordinates->getY() + $adjustment[1]
+            )
+        );
+    }
+
+    public function getCentreTile(): MapTile
     {
         return $this->getMapTileByCoordinates(
             $this->mapTileFactory->createMapCoordinates(
@@ -68,7 +93,13 @@ class MapStencil implements Map
 
     private function getTileIdFromCoordinates(MapCoordinates $mapCoordinates): int
     {
-        return $mapCoordinates->getY() * $this->mapSize->getXSize() + $mapCoordinates->getX();
+        $tileId = $mapCoordinates->getY() * $this->mapSize->getXSize() + $mapCoordinates->getX();
+
+        if (!$this->isValidTileId($tileId)) {
+            throw new \RuntimeException('Invalid Map Coordinates');
+        }
+
+        return $tileId;
     }
 
     private function getAdjustmentList(MapCoordinates $mapCoordinates): array
@@ -76,5 +107,10 @@ class MapStencil implements Map
         return $mapCoordinates->getX() % 2 == 0
             ? self::ADJACENT_COORDINATE_ADJUSTMENTS_EVEN
             : self::ADJACENT_COORDINATE_ADJUSTMENTS_ODD;
+    }
+
+    private function isValidTileId($tileId): bool
+    {
+        return $tileId > 0 && $tileId < $this->mapSize->getSize();
     }
 }

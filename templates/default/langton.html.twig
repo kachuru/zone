@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    @import url({{ asset('/assets/css/map-large.css') }});
+    @import url({{ asset('/assets/css/langton.css') }});
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/langton.js"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div id="ant-location">
+        <div id="ant-location-tile-id">{{ initial.tileId }}</div>
+        <div id="ant-location-orientation">n</div>
+    </div>
+
+    <div class="map">
+        {% for tile in map.mapTiles %}
+            <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-state-alpha"
+                 style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
+
+                <div id="tile-{{ tile.tileId }}-inner" class="tile-inner{% if tile.coordinates == initial.coordinates %} ant ant-orient-n{% endif %}"
+                     onClick="alert('T{{ tile.tileId }} - {{ tile.coordinates }}')">
+
+                    {#<a name="{{ tile.tileId }}">T{{ tile.tileId }}</a><br />#}
+                    {#{{ tile.coordinates }}<br />#}
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
