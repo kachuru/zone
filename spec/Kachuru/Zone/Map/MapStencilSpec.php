@@ -2,6 +2,7 @@
 
 namespace spec\Kachuru\Zone\Map;
 
+use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
 use Kachuru\Zone\Map\MapStencil;
@@ -119,6 +120,21 @@ class MapStencilSpec extends ObjectBehavior
         );
 
         $this->getCentreTile()->shouldBeLike($this->makeTile(12, 2, 2));
+    }
+
+    function it_returns_map_tile_in_direction()
+    {
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_NORTH)->shouldBeLike($this->makeTile(2, 2, 0));
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_NORTHEAST)->shouldBeLike($this->makeTile(3, 3, 0));
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_SOUTHEAST)->shouldBeLike($this->makeTile(7, 3, 1));
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_SOUTH)->shouldBeLike($this->makeTile(10, 2, 2));
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_SOUTHWEST)->shouldBeLike($this->makeTile(5, 1, 1));
+        $this->getMapTileInDirection(new MapCoordinates(2, 1), Map::DIRECTION_NORTHWEST)->shouldBeLike($this->makeTile(1, 1, 0));
+    }
+
+    function it_throws_exception_for_invalid_tile()
+    {
+        $this->shouldThrow('\RunTimeException')->duringGetMapTileInDirection(new MapCoordinates(0, 0), Map::DIRECTION_NORTH);
     }
 
     private function makeTile($id, $x, $y): MapTile
