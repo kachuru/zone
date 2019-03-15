@@ -42,9 +42,21 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/langton.html.twig', [
             'map' => $moveCalculator->getMap(),
-            'initial' => $moveCalculator->getMap()->getCentreTile()
+            'initial' => $moveCalculator->getMap()->getCentreTile(),
+            'seed' => 1
         ]);
     }
+
+//    /**
+//     * @Route("/langton/{seed}", requirements={"seed"="\d+"});
+//     */
+//    public function langtonWithSeed(MoveCalculator $moveCalculator, $seed)
+//    {
+//        return $this->render('default/langton.html.twig', [
+//            'map' => $moveCalculator->getMap(),
+//            'initial' => $moveCalculator->getMap()->getCentreTile()
+//        ]);
+//    }
 
     /**
      * @Route("/langton/move");

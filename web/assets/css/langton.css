@@ -24,9 +24,18 @@ div.ant {
     z-index: 1;
 }
 
-div#ant-location {
+div#status-box {
     float: left;
-    display: none;
+    position: fixed;
+    margin: 5px;
+    padding: 10px;
+    background: #fff;
+    border: #000 1px solid;
+    z-index: 10;
+}
+
+dt {
+    font-weight: bold;
 }
 
 div.ant-orient-n {

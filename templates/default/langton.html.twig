@@ -12,9 +12,17 @@
 
 {% block body %}
 
-    <div id="ant-location">
-        <div id="ant-location-tile-id">{{ initial.tileId }}</div>
-        <div id="ant-location-orientation">n</div>
+    <div id="status-box">
+        <dl id="ant-location">
+            <dt>Tile ID</dt>
+            <dd id="ant-location-tile-id">{{ initial.tileId }}</dd>
+            <dt>Orientation</dt>
+            <dd id="ant-location-orientation">n</dd>
+        </dl>
+        <dl id="map-seed">
+            <dt>Seed</dt>
+            <dd id="map-seed-number">{{ seed }}</dd>
+        </dl>
     </div>
 
     <div class="map">
