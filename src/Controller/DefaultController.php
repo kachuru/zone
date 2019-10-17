@@ -8,9 +8,7 @@ use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\MoveCalculator;
 use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapStencil;
-use Kachuru\Zone\Map\MapTile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,10 +26,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/map");
      */
-    public function map(MapStencil $map)
+    public function map(MapStencil $mapStencil)
     {
         return $this->render('default/map.html.twig', [
-            'map' => $map
+            'map' => $mapStencil
         ]);
     }
 

@@ -4,5 +4,5 @@ namespace Kachuru\Zone\Map;
 
 interface MapBuilder
 {
-    public function build(int $size): HexagonalMap;
+    public function build(MapSize $mapSize): Map;
 }
