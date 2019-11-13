@@ -33,7 +33,7 @@ class MoveCalculator
         return new LangtonMove(
             $this->getNewAntState($mapTileState, $antState),
             $this->getNewAntPosition($mapTileState, $antState),
-            $this->getUpdatedCurrentTileState($mapTileState)
+            $this->getCurrentTileNewState($mapTileState)
         );
     }
 
@@ -53,13 +53,8 @@ class MoveCalculator
         );
     }
 
-    private function getUpdatedCurrentTileState(MapTileState $mapTileState): MapTileState
+    private function getCurrentTileNewState($mapTileState): MapTileState
     {
-        return new MapTileState($mapTileState->getMapTile(), $this->getNextState($mapTileState->getState()));
-    }
-
-    private function getNextState(int $state): int
-    {
-        return ($state + 1) % 4;
+        return $this->transitionHandler->getMapTileNextState($mapTileState);
     }
 }
