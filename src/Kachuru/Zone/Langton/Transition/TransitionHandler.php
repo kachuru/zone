@@ -40,6 +40,11 @@ class TransitionHandler
         return $this->stateTransitions[$handle]->getNextAntState($currentAntState);
     }
 
+    public function getMapTileNextState(MapTileState $mapTileState): MapTileState
+    {
+        return $this->stateTransitions[$mapTileState->getStateHandle()]->getNextTileState($mapTileState);
+    }
+
     protected function transitionHandleIsSet(string $handle): bool
     {
         return array_key_exists($handle, $this->stateTransitions);

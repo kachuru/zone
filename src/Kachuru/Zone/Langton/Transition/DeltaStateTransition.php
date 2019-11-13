@@ -3,6 +3,7 @@
 namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
+use Kachuru\Zone\Langton\MapTileState;
 
 class DeltaStateTransition implements StateTransition
 {
@@ -11,5 +12,10 @@ class DeltaStateTransition implements StateTransition
         return new AntState(
             (new AntState($currentAntState->getAnticlockwiseOrientation()))->getAnticlockwiseOrientation()
         );
+    }
+
+    public function getNextTileState(MapTileState $currentTileState): MapTileState
+    {
+        return new MapTileState($currentTileState->getMapTile(), MapTileState::TILE_STATE_ALPHA);
     }
 }
