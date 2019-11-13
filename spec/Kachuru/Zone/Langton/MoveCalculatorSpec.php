@@ -6,6 +6,7 @@ use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\MoveCalculator;
+use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
@@ -19,10 +20,10 @@ class MoveCalculatorSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith(new MapStencil(
-            new MapSize(4, 3),
-            new MapTileFactory()
-        ));
+        $this->beConstructedWith(
+            new MapStencil(new MapSize(4, 3), new MapTileFactory()),
+            new TransitionHandler()
+        );
     }
 
     function it_returns_the_correct_next_move()

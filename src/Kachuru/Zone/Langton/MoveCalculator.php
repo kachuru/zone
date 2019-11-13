@@ -4,14 +4,18 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Langton\Transition\TransitionHandler;
 
 class MoveCalculator
 {
     private $map;
 
-    public function __construct(Map $map)
+    private $transitionHandler;
+
+    public function __construct(Map $map, TransitionHandler $transitionHandler)
     {
         $this->map = $map;
+        $this->transitionHandler = $transitionHandler;
     }
 
     public function getMap(): Map
@@ -33,27 +37,12 @@ class MoveCalculator
         );
     }
 
-    private function getNewAntState(MapTileState $mapTileState, AntState $antState): AntState
+    private function getNewAntState(MapTileState $mapTileState, AntState $currentAntState): AntState
     {
-        switch ($mapTileState->getState()) {
-            case MapTileState::TILE_STATE_ALPHA:
-                return new AntState($antState->getClockwiseOrientation());
-
-            case MapTileState::TILE_STATE_BETA:
-                return new AntState($antState->getAnticlockwiseOrientation());
-
-            case MapTileState::TILE_STATE_GAMMA:
-                return new AntState(
-                    (new AntState($antState->getClockwiseOrientation()))->getClockwiseOrientation()
-                );
-
-            case MapTileState::TILE_STATE_DELTA:
-                return new AntState(
-                    (new AntState($antState->getAnticlockwiseOrientation()))->getAnticlockwiseOrientation()
-                );
-        }
-
-        throw new \RuntimeException('The map state could not be mapped to an ant move');
+        return $this->transitionHandler->getAntStateTransitionForMapTileState(
+            $mapTileState->getStateHandle(),
+            $currentAntState
+        );
     }
 
     private function getNewAntPosition(MapTileState $mapState, AntState $antState): MapTile
