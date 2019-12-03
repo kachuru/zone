@@ -9,20 +9,6 @@ use Prophecy\Argument;
 
 class SeedSpec extends ObjectBehavior
 {
-    function it_returns_state_order_based_on_seed_0()
-    {
-        $this->beConstructedWith(0);
-
-        $this->getMapTileStateTransitions()->shouldBeLike(
-            [
-                MapTileState::TILE_STATE_HANDLES[MapTileState::TILE_STATE_ALPHA],
-                MapTileState::TILE_STATE_HANDLES[MapTileState::TILE_STATE_BETA],
-                MapTileState::TILE_STATE_HANDLES[MapTileState::TILE_STATE_GAMMA],
-                MapTileState::TILE_STATE_HANDLES[MapTileState::TILE_STATE_DELTA],
-            ]
-        );
-    }
-
     function it_gets_all_the_transitions()
     {
         $this->beConstructedWith(0);
@@ -58,5 +44,66 @@ class SeedSpec extends ObjectBehavior
                 ['delta', 'gamma', 'beta', 'alpha'], // 23
             ]
         );
+    }
+
+    function it_returns_state_order_based_on_seed_0()
+    {
+        $this->beConstructedWith(0);
+
+        $this->getMapTileStateTransitions()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+            ]
+        );
+    }
+
+    function it_returns_state_order_based_on_seed_1()
+    {
+        $this->beConstructedWith(1);
+
+        $this->getMapTileStateTransitions()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+            ]
+        );
+    }
+
+    function it_returns_state_order_based_on_seed_7()
+    {
+        $this->beConstructedWith(7);
+
+        $this->getMapTileStateTransitions()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+            ]
+        );
+    }
+
+    function it_returns_state_order_based_on_seed_19()
+    {
+        $this->beConstructedWith(19);
+
+        $this->getMapTileStateTransitions()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+            ]
+        );
+    }
+
+    private function getStateHandle(int $state): string
+    {
+        return MapTileState::TILE_STATE_HANDLES[$state];
     }
 }

@@ -13,7 +13,7 @@ class Seed
 
     public function getMapTileStateTransitions()
     {
-        return $this->getBaseTransitions();
+        return $this->getAllTransitions()[$this->seed];
     }
 
     public function getAllTransitions()
@@ -36,16 +36,23 @@ class Seed
         $combinations = [];
 
         for ($i = 0; $i < count($initial); $i++) {
-            if (count($initial) >= 2) {
-                $prefixTransition = array_slice($initial, 0, 1);
-                foreach ($this->combinations(array_slice($initial, 1, count($initial))) as $subTransition) {
-                    $combinations[] = array_merge($prefixTransition, $subTransition);
-                }
-            } else {
-                $combinations[] = $initial;
-            }
+            $combinations = (count($initial) > 2)
+                ? array_merge($combinations, $this->calculateCombinations($initial))
+                : array_merge($combinations, [$initial]);
 
             $initial = $this->rotate($initial);
+        }
+
+        return $combinations;
+    }
+
+    protected function calculateCombinations(array $initial)
+    {
+        $combinations = [];
+
+        $prefixTransition = array_slice($initial, 0, 1);
+        foreach ($this->combinations(array_slice($initial, 1, count($initial))) as $subTransition) {
+            $combinations[] = array_merge($prefixTransition, $subTransition);
         }
 
         return $combinations;
