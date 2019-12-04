@@ -9,48 +9,11 @@ use Prophecy\Argument;
 
 class SeedSpec extends ObjectBehavior
 {
-    function it_gets_all_the_transitions()
+    function it_works_out_transitions_mathematically_seed_0()
     {
         $this->beConstructedWith(0);
 
-        $this->getAllTransitions()->shouldReturn(
-            [
-                ['alpha', 'beta', 'gamma', 'delta'], //  0
-                ['alpha', 'beta', 'delta', 'gamma'], //  1
-                ['alpha', 'gamma', 'delta', 'beta'], //  2
-                ['alpha', 'gamma', 'beta', 'delta'], //  3
-                ['alpha', 'delta', 'beta', 'gamma'], //  4
-                ['alpha', 'delta', 'gamma', 'beta'], //  5
-
-                ['beta', 'gamma', 'delta', 'alpha'], //  6
-                ['beta', 'gamma', 'alpha', 'delta'], //  7
-                ['beta', 'delta', 'alpha', 'gamma'], //  8
-                ['beta', 'delta', 'gamma', 'alpha'], //  9
-                ['beta', 'alpha', 'gamma', 'delta'], // 10
-                ['beta', 'alpha', 'delta', 'gamma'], // 11
-
-                ['gamma', 'delta', 'alpha', 'beta'], // 12
-                ['gamma', 'delta', 'beta', 'alpha'], // 13
-                ['gamma', 'alpha', 'beta', 'delta'], // 14
-                ['gamma', 'alpha', 'delta', 'beta'], // 15
-                ['gamma', 'beta', 'delta', 'alpha'], // 16
-                ['gamma', 'beta', 'alpha', 'delta'], // 17
-
-                ['delta', 'alpha', 'beta', 'gamma'], // 18
-                ['delta', 'alpha', 'gamma', 'beta'], // 19
-                ['delta', 'beta', 'gamma', 'alpha'], // 20
-                ['delta', 'beta', 'alpha', 'gamma'], // 21
-                ['delta', 'gamma', 'alpha', 'beta'], // 22
-                ['delta', 'gamma', 'beta', 'alpha'], // 23
-            ]
-        );
-    }
-
-    function it_returns_state_order_based_on_seed_0()
-    {
-        $this->beConstructedWith(0);
-
-        $this->getMapTileStateTransitions()->shouldBeLike(
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
                 $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
                 $this->getStateHandle(MapTileState::TILE_STATE_BETA),
@@ -60,11 +23,11 @@ class SeedSpec extends ObjectBehavior
         );
     }
 
-    function it_returns_state_order_based_on_seed_1()
+    function it_works_out_transitions_mathematically_seed_1()
     {
         $this->beConstructedWith(1);
 
-        $this->getMapTileStateTransitions()->shouldBeLike(
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
                 $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
                 $this->getStateHandle(MapTileState::TILE_STATE_BETA),
@@ -74,11 +37,27 @@ class SeedSpec extends ObjectBehavior
         );
     }
 
-    function it_returns_state_order_based_on_seed_7()
+
+    function it_works_out_transitions_mathematically_seed_6()
+    {
+        $this->beConstructedWith(6);
+
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+            ]
+        );
+    }
+
+
+    function it_works_out_transitions_mathematically_seed_7()
     {
         $this->beConstructedWith(7);
 
-        $this->getMapTileStateTransitions()->shouldBeLike(
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
                 $this->getStateHandle(MapTileState::TILE_STATE_BETA),
                 $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
@@ -88,16 +67,58 @@ class SeedSpec extends ObjectBehavior
         );
     }
 
-    function it_returns_state_order_based_on_seed_19()
+    function it_works_out_transitions_mathematically_seed_16()
     {
-        $this->beConstructedWith(19);
+        $this->beConstructedWith(16);
 
-        $this->getMapTileStateTransitions()->shouldBeLike(
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
                 $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
                 $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+            ]
+        );
+    }
+
+    function it_works_out_transitions_mathematically_seed_17()
+    {
+        $this->beConstructedWith(17);
+
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+            ]
+        );
+    }
+
+    function it_works_out_transitions_mathematically_seed_20()
+    {
+        $this->beConstructedWith(20);
+
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+            ]
+        );
+    }
+
+    function it_works_out_transitions_mathematically_seed_21()
+    {
+        $this->beConstructedWith(21);
+
+        $this->getMapTileStateTransitionOrder()->shouldBeLike(
+            [
+                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
+                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
             ]
         );
     }
