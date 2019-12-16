@@ -1,4 +1,4 @@
-FROM quay.io/continuouspipe/php7.1-nginx:latest
+FROM quay.io/continuouspipe/php7.2-nginx:latest
 
 RUN apt-get update -qq \
  && DEBIAN_FRONTEND=noninteractive apt-get -qq -y --no-install-recommends install \

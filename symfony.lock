@@ -29,6 +29,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "php": {
+        "version": "7.2"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
