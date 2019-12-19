@@ -4,7 +4,7 @@ namespace spec\Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\Seed;
-use Kachuru\Zone\Langton\TransitionsCalculator;
+use Kachuru\Zone\Langton\CombinationsCalculator;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -12,7 +12,7 @@ class SeedSpec extends ObjectBehavior
 {
     function it_works_out_transitions_mathematically_seed_0()
     {
-        $this->beConstructedWith(0, new TransitionsCalculator());
+        $this->beConstructedWith(0, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -26,7 +26,7 @@ class SeedSpec extends ObjectBehavior
 
     function it_works_out_transitions_mathematically_seed_1()
     {
-        $this->beConstructedWith(1, new TransitionsCalculator());
+        $this->beConstructedWith(1, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -37,11 +37,10 @@ class SeedSpec extends ObjectBehavior
             ]
         );
     }
-
 
     function it_works_out_transitions_mathematically_seed_6()
     {
-        $this->beConstructedWith(6, new TransitionsCalculator());
+        $this->beConstructedWith(6, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -53,10 +52,9 @@ class SeedSpec extends ObjectBehavior
         );
     }
 
-
     function it_works_out_transitions_mathematically_seed_7()
     {
-        $this->beConstructedWith(7, new TransitionsCalculator());
+        $this->beConstructedWith(7, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -70,7 +68,7 @@ class SeedSpec extends ObjectBehavior
 
     function it_works_out_transitions_mathematically_seed_16()
     {
-        $this->beConstructedWith(16, new TransitionsCalculator());
+        $this->beConstructedWith(16, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -84,7 +82,7 @@ class SeedSpec extends ObjectBehavior
 
     function it_works_out_transitions_mathematically_seed_17()
     {
-        $this->beConstructedWith(17, new TransitionsCalculator());
+        $this->beConstructedWith(17, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -98,7 +96,7 @@ class SeedSpec extends ObjectBehavior
 
     function it_works_out_transitions_mathematically_seed_20()
     {
-        $this->beConstructedWith(20, new TransitionsCalculator());
+        $this->beConstructedWith(20, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
@@ -112,7 +110,7 @@ class SeedSpec extends ObjectBehavior
 
     function it_works_out_transitions_mathematically_seed_21()
     {
-        $this->beConstructedWith(21, new TransitionsCalculator());
+        $this->beConstructedWith(21, new CombinationsCalculator());
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
