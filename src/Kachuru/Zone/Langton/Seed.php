@@ -6,19 +6,22 @@ class Seed
 {
     private $seed;
 
-    private $transitionsCalculator;
+    private $combinationsCalculator;
 
-    public function __construct(
-        int $seed,
-        TransitionsCalculator $transitionsCalculator
-    ) {
+    public function __construct(string $seed, CombinationsCalculator $combinationsCalculator)
+    {
         $this->seed = $seed;
-        $this->transitionsCalculator = $transitionsCalculator;
+        $this->combinationsCalculator = $combinationsCalculator;
     }
 
     public function getMapTileStateTransitionOrder(): array
     {
-        return $this->transitionsCalculator->calculate($this->getBaseTransitions(), $this->seed);
+        return $this->combinationsCalculator->calculate($this->getBaseTransitions(), (int) $this->seed);
+    }
+
+    public function getTransitionsRandomSeed()
+    {
+        return mt_rand(0, gmp_fact(count($this->getBaseTransitions()) - 1));
     }
 
     public function getBaseTransitions(): array
