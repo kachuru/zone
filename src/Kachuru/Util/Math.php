@@ -6,15 +6,9 @@ class Math
 {
     public static function factorial(int $number): int
     {
-        $factorial = 1;
-
-        while ($number >= 1) {
-            $factorial = $factorial * $number;
-
-            $number--;
-        }
-
-        return $factorial;
+        return $number > 1
+            ? $number * self::factorial($number - 1)
+            : 1;
     }
 
     public function getFactorial(int $number): int
