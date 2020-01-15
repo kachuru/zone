@@ -4,6 +4,11 @@ namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\MapTileState;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseOnce;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseTwice;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseOnce;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseTwice;
 
 class TransitionHandler
 {
@@ -11,15 +16,32 @@ class TransitionHandler
 
     public function __construct()
     {
-        /**
-         * Strictly speaking, I think this should be handled in the services.yaml file BUT once we use seeds instead
-         * the transitions will probably need to be created dynamically, so we will probably want a factory instead
-         */
+        /* This needs to come from the Seed */
+        $states = [
+            MapTileState::TILE_STATE_ALPHA => [
+                'turn' => new AntTurnClockwiseOnce(),
+                'nextState' => MapTileState::TILE_STATE_BETA
+            ],
+            MapTileState::TILE_STATE_BETA => [
+                'turn' => new AntTurnAnticlockwiseOnce(),
+                'nextState' => MapTileState::TILE_STATE_GAMMA
+            ],
+            MapTileState::TILE_STATE_GAMMA => [
+                'turn' => new AntTurnClockwiseTwice(),
+                'nextState' => MapTileState::TILE_STATE_DELTA
+            ],
+            MapTileState::TILE_STATE_DELTA => [
+                'turn' => new AntTurnAnticlockwiseTwice(),
+                'nextState' => MapTileState::TILE_STATE_ALPHA
+            ],
+        ];
 
-        $this->addStateTransition($this->getStateHandle(MapTileState::TILE_STATE_ALPHA), new AlphaStateTransition());
-        $this->addStateTransition($this->getStateHandle(MapTileState::TILE_STATE_BETA), new BetaStateTransition());
-        $this->addStateTransition($this->getStateHandle(MapTileState::TILE_STATE_GAMMA), new GammaStateTransition());
-        $this->addStateTransition($this->getStateHandle(MapTileState::TILE_STATE_DELTA), new DeltaStateTransition());
+        foreach ($states as $stateId => $state) {
+            $this->addStateTransition(
+                $this->getStateHandle($stateId),
+                $this->buildStateTransition($state['turn'], $state['nextState'])
+            );
+        }
     }
 
     public function addStateTransition(string $handle, StateTransition $stateTransition)
@@ -53,5 +75,10 @@ class TransitionHandler
     protected function getStateHandle(int $tileStateId)
     {
         return MapTileState::TILE_STATE_HANDLES[$tileStateId];
+    }
+
+    private function buildStateTransition(AntTurn $antTurn, int $nextStateId): StateTransition
+    {
+        return new StateTransition($antTurn, $nextStateId);
     }
 }
