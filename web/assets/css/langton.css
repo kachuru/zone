@@ -1,27 +1,48 @@
 div.tile-state-alpha {
-    background: url(../images/hexagons.png) -88px 0;
+    background: url(../images/hexagons.svg) -48px 0;
 }
 
 div.tile-state-beta {
-    background: url(../images/hexagons.png) -88px -80px;
+    background: url(../images/hexagons.svg) -48px -40px;
 }
 
 div.tile-state-gamma {
-    background: url(../images/hexagons.png) -176px 0;
+    background: url(../images/hexagons.svg) -48px -80px;
 }
 
 div.tile-state-delta {
-    background: url(../images/hexagons.png) -176px -80px;
+    background: url(../images/hexagons.svg) -48px -120px;
+}
+
+div.tile-state-epsilon {
+    background: url(../images/hexagons.svg) -48px -160px;
+}
+
+div.tile-state-zeta {
+    background: url(../images/hexagons.svg) -48px -200px;
+}
+
+div.tile-state-eta {
+    background: url(../images/hexagons.svg) -48px -240px;
+}
+
+div.tile-state-theta {
+    background: url(../images/hexagons.svg) -48px -280px;
+}
+
+div.highlight-tile {
+    background: url(../images/hexagons.svg) 1px -0px;
+    z-index: 10;
 }
 
 div.ant {
     position: absolute;
-    top: 5px;
-    left: 25px;
-    width: 42px;
-    height: 65px;
+    top: 2px;
+    left: 13px;
+    width: 23px;
+    height: 33px;
     background: url(../images/ant.png) 0 0;
-    z-index: 1;
+    z-index: 20;
 }
 
 div#ant-location {
