@@ -1,8 +1,8 @@
 <?php
 
-namespace Kachuru\Zone\Langton;
+namespace Kachuru\Util;
 
-class CombinationsCalculator
+class Combinations
 {
     public function calculate(array $source, int $combinationSeed)
     {
