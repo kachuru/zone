@@ -2,21 +2,25 @@
 
 namespace Kachuru\Zone\Langton;
 
+use Kachuru\Util\Combinations;
+
 class Seed
 {
     private $seed;
 
-    private $combinationsCalculator;
+    private $combinations;
 
-    public function __construct(string $seed, CombinationsCalculator $combinationsCalculator)
-    {
+    public function __construct(
+        string $seed,
+        Combinations $combinations
+    ) {
         $this->seed = $seed;
-        $this->combinationsCalculator = $combinationsCalculator;
+        $this->combinations = $combinations;
     }
 
     public function getMapTileStateTransitionOrder(): array
     {
-        return $this->combinationsCalculator->calculate($this->getBaseTransitions(), (int) $this->seed);
+        return $this->combinations->calculate($this->getBaseTransitions(), (int) $this->seed);
     }
 
     public function getTransitionsRandomSeed()

@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Kachuru\Zone\Langton;
+namespace spec\Kachuru\Util;
 
-use Kachuru\Zone\Langton\CombinationsCalculator;
+use Kachuru\Util\Combinations;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class CombinationsCalculatorSpec extends ObjectBehavior
+class CombinationsSpec extends ObjectBehavior
 {
     function it_returns_empty_array_for_no_input()
     {
