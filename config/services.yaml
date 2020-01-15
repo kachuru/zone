@@ -43,8 +43,8 @@ services:
     Kachuru\Twig\Zone\Map\TilePosition:
         class: Kachuru\Twig\Zone\Map\TilePosition
         arguments:
-            - 67
-            - 76
+            - 33
+            - 38
 
     move.calculator.standard:
         class: Kachuru\Zone\Map\MapStencil
