@@ -36,6 +36,6 @@ class Combinations
 
     private function getFactor(int $n): int
     {
-        return (int) gmp_fact($n) / $n;
+        return (int) Math::factorial($n) / $n;
     }
 }
