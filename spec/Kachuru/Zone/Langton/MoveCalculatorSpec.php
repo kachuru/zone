@@ -2,10 +2,12 @@
 
 namespace spec\Kachuru\Zone\Langton;
 
+use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\MoveCalculator;
+use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
@@ -22,7 +24,7 @@ class MoveCalculatorSpec extends ObjectBehavior
     {
         $this->beConstructedWith(
             new MapStencil(new MapSize(4, 3), new MapTileFactory()),
-            new TransitionHandler()
+            new TransitionHandler(new Seed(0, new Combinations()))
         );
     }
 

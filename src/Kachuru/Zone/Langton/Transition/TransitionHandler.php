@@ -4,42 +4,25 @@ namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\MapTileState;
+use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseOnce;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseTwice;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseOnce;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseTwice;
 
 class TransitionHandler
 {
     private $stateTransitions = [];
 
-    public function __construct()
+    public function __construct(Seed $seed)
     {
-        /* This needs to come from the Seed */
-        $states = [
-            MapTileState::TILE_STATE_ALPHA => [
-                'turn' => new AntTurnClockwiseOnce(),
-                'nextState' => MapTileState::TILE_STATE_BETA
-            ],
-            MapTileState::TILE_STATE_BETA => [
-                'turn' => new AntTurnAnticlockwiseOnce(),
-                'nextState' => MapTileState::TILE_STATE_GAMMA
-            ],
-            MapTileState::TILE_STATE_GAMMA => [
-                'turn' => new AntTurnClockwiseTwice(),
-                'nextState' => MapTileState::TILE_STATE_DELTA
-            ],
-            MapTileState::TILE_STATE_DELTA => [
-                'turn' => new AntTurnAnticlockwiseTwice(),
-                'nextState' => MapTileState::TILE_STATE_ALPHA
-            ],
-        ];
+        $turn = $seed->getAntTurnOrder();
 
-        foreach ($states as $stateId => $state) {
+        $transitionOrder = $seed->getMapTileStateTransitionOrder();
+
+        foreach ($transitionOrder as $idx => $stateId) {
             $this->addStateTransition(
                 $this->getStateHandle($stateId),
-                $this->buildStateTransition($state['turn'], $state['nextState'])
+                $this->buildStateTransition(
+                    $turn[$idx],
+                    $transitionOrder[$this->getNextTransitionOffset($idx, count($transitionOrder))])
             );
         }
     }
@@ -80,5 +63,12 @@ class TransitionHandler
     private function buildStateTransition(AntTurn $antTurn, int $nextStateId): StateTransition
     {
         return new StateTransition($antTurn, $nextStateId);
+    }
+
+    private function getNextTransitionOffset($idx, $transitions): int
+    {
+        return ($idx + 1) < $transitions
+            ? ($idx + 1)
+            : 0;
     }
 }
