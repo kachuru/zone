@@ -16,10 +16,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                MapTileState::TILE_STATE_ALPHA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -30,10 +30,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                MapTileState::TILE_STATE_ALPHA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_DELTA,
+                MapTileState::TILE_STATE_GAMMA,
             ]
         );
     }
@@ -44,10 +44,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_DELTA,
+                MapTileState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -58,10 +58,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_ALPHA,
+                MapTileState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -72,10 +72,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_DELTA,
+                MapTileState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -86,10 +86,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_ALPHA,
+                MapTileState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -100,10 +100,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
+                MapTileState::TILE_STATE_DELTA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_GAMMA,
+                MapTileState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -114,16 +114,11 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                $this->getStateHandle(MapTileState::TILE_STATE_DELTA),
-                $this->getStateHandle(MapTileState::TILE_STATE_BETA),
-                $this->getStateHandle(MapTileState::TILE_STATE_ALPHA),
-                $this->getStateHandle(MapTileState::TILE_STATE_GAMMA),
+                MapTileState::TILE_STATE_DELTA,
+                MapTileState::TILE_STATE_BETA,
+                MapTileState::TILE_STATE_ALPHA,
+                MapTileState::TILE_STATE_GAMMA,
             ]
         );
-    }
-
-    private function getStateHandle(int $state): string
-    {
-        return MapTileState::TILE_STATE_HANDLES[$state];
     }
 }

@@ -8,6 +8,7 @@ function langtonMove(moves) {
     $.post(
         "/langton/move",
         {
+            'seedId': $('#seed-id').text(),
             'tileId': $('#ant-location-tile-id').text(),
             'orientation': $('#ant-location-orientation').text(),
             'state': getTileState($('#ant-location-tile-id').text())

@@ -7,9 +7,12 @@ use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\MoveCalculator;
+use Kachuru\Zone\Langton\Seed;
+use Kachuru\Zone\Langton\SeedFactory;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapStencil;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -34,36 +37,48 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/langton");
-     */
-    public function langton(MoveCalculator $moveCalculator)
-    {
-        return $this->render('default/langton.html.twig', [
-            'map' => $moveCalculator->getMap(),
-            'initial' => $moveCalculator->getMap()->getCentreTile()
-        ]);
-    }
-
-    /**
      * @Route("/langton/move");
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function langtonMove(Request $request, MoveCalculator $moveCalculator)
+    public function langtonMove(Request $request, SeedFactory $seededMapBuilderFactory)
     {
+        $seed = $seededMapBuilderFactory->getSeed((int) $request->request->get('seedId'));
+        $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
+        $map = $seededMapBuilder->initialise();
+
         /**
          * $request needs to provide current tile ID and co-ordinates, tile state, and ant state
          */
         return $this->json(
             $this->getLangtonMoveDto(
-                $moveCalculator->getMove(
+                $seededMapBuilder->move(
                     new MapTileState(
-                        $moveCalculator->getMapTileByTileId($request->request->get('tileId')),
+                        $map->getMapTileByTileId($request->request->get('tileId')),
                         array_flip(MapTileState::TILE_STATE_HANDLES)[$request->request->get('state')]
                     ),
                     new AntState((int) array_flip(Map::DIRECTION_HANDLES)[$request->request->get('orientation')])
                 )
             )
         );
+    }
+
+    /**
+     * @Route("/langton");
+     * @Route("/langton/{seed}");
+     */
+    public function langton(SeedFactory $seededMapBuilderFactory, int $seedId = null)
+    {
+        $seed = $seededMapBuilderFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
+
+        $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
+
+        $map = $seededMapBuilder->initialise();
+
+        return $this->render('default/langton.html.twig', [
+            'map' => $map,
+            'initial' => $map->getCentreTile(),
+            'seedId' => $seed->getSeedId()
+        ]);
     }
 
     private function getLangtonMoveDto(LangtonMove $langtonMove): LangtonMoveDto
