@@ -9,7 +9,7 @@ div.map {
 div.tile-outer {
     height: 38px;
     width: 46px;
-   position: absolute;
+    position: absolute;
 
     z-index: 0;
 }
