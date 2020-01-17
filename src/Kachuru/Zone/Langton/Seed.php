@@ -3,7 +3,6 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Util\Combinations;
-use Kachuru\Util\Math;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseOnce;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseTwice;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseOnce;
