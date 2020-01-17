@@ -6,13 +6,11 @@ use Kachuru\Zone\Dto\Langton\LangtonMove as LangtonMoveDto;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
-use Kachuru\Zone\Langton\MoveCalculator;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\SeedFactory;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapStencil;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -70,14 +68,12 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/langton");
-     * @Route("/langton/{seed}");
+     * @Route("/langton/{seedId}");
      */
     public function langton(SeedFactory $seededMapBuilderFactory, int $seedId = null)
     {
         $seed = $seededMapBuilderFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
-
         $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
-
         $map = $seededMapBuilder->initialise();
 
         return $this->render('default/langton.html.twig', [
