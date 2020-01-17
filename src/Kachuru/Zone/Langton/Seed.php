@@ -11,13 +11,15 @@ use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseTwice;
 
 class Seed
 {
-    const BASE_TRANSITIONS = [
-        MapTileState::TILE_STATE_ALPHA,
-        MapTileState::TILE_STATE_BETA,
-        MapTileState::TILE_STATE_GAMMA,
-        MapTileState::TILE_STATE_DELTA,
-    ];
-
+    /**
+     * The Seed, of the format ABBBBBCC
+     *   A: The transition set to use (1: 4 transitions, 2: 8 transitions)
+     *   B: The transition configuration (00000-00023 or 00000-40319)
+     *   C: The step-turn configuration to use (0-23)
+     * e.g. 10001709
+     *
+     * @var int $seedId The ID representing the seed
+     */
     private $seedId;
 
     private $combinations;
@@ -35,30 +37,50 @@ class Seed
 
     public static function getTransitionsRandomSeed()
     {
-        return mt_rand(0, Math::factorial(count(self::BASE_TRANSITIONS) - 1));
+        $set = mt_rand(1, 2);
+
+        return (int) sprintf('%d%05d%02d', $set, mt_rand(0, $set == 1 ? 23 : 40319), mt_rand(0, 23));
     }
 
     public function getMapTileStateTransitionOrder(): array
     {
-        return $this->combinations->calculate($this->getBaseTransitions(), (int) $this->seedId);
+        return $this->combinations->calculate($this->getBaseTransitions(), $this->getTransitionSeedId());
+    }
+
+    public function getFirstState(): string
+    {
+        return $this->getMapTileStateTransitionOrder()[0];
     }
 
     public function getBaseTransitions(): array
     {
-//        if ($this->seedId < Math::factorial(4)) {
-//            return array_slice(self::BASE_TRANSITIONS, 0, 4);
-//        }
-
-        return self::BASE_TRANSITIONS;
+        return ($this->getTransitionSetId() == 1)
+            ? array_slice(MapTileState::TILE_STATES, 0, 4)
+            : MapTileState::TILE_STATES;
     }
 
     public function getAntTurnOrder()
     {
-        return [
+        return $this->combinations->calculate([
             new AntTurnClockwiseOnce(),
             new AntTurnAnticlockwiseOnce(),
             new AntTurnClockwiseTwice(),
             new AntTurnAnticlockwiseTwice()
-        ];
+        ], $this->getAntTurnSeedId());
+    }
+
+    private function getTransitionSetId()
+    {
+        return (int) substr($this->seedId, 0, 1);
+    }
+
+    private function getTransitionSeedId()
+    {
+        return (int) substr($this->seedId, 1, 5);
+    }
+
+    private function getAntTurnSeedId()
+    {
+        return (int) substr($this->seedId, 7, 2);
     }
 }

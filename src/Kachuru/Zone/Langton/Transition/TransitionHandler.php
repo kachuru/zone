@@ -21,7 +21,7 @@ class TransitionHandler
             $this->addStateTransition(
                 $this->getStateHandle($stateId),
                 $this->buildStateTransition(
-                    $turn[$idx],
+                    $turn[($idx % count($turn))],
                     $transitionOrder[$this->getNextTransitionOffset($idx, count($transitionOrder))])
             );
         }

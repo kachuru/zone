@@ -34,7 +34,7 @@ function langtonMove(moves) {
             $('#ant-location-tile-id').text(response.antStateLocation);
             $('#ant-location-orientation').text(response.antStateOrientation);
 
-            if (moves <= 2500) {
+            if (moves <= 10000) {
                 setTimeout(function () {
                     langtonMove(moves);
                 }, 500);
