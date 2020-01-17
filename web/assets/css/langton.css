@@ -1,38 +1,38 @@
+div.tile-outer {
+    background: url(../images/hexagons.svg) 0px 0px;
+    z-index: -1;
+}
+
 div.tile-state-alpha {
-    background: url(../images/hexagons.svg) -48px 0;
+    background: url(../images/hexagons.svg) 0px -40px;
 }
 
 div.tile-state-beta {
-    background: url(../images/hexagons.svg) -48px -40px;
+    background: url(../images/hexagons.svg) 0px -80px;
 }
 
 div.tile-state-gamma {
-    background: url(../images/hexagons.svg) -48px -80px;
+    background: url(../images/hexagons.svg) 0px -120px;
 }
 
 div.tile-state-delta {
-    background: url(../images/hexagons.svg) -48px -120px;
+    background: url(../images/hexagons.svg) 0px -160px;
 }
 
 div.tile-state-epsilon {
-    background: url(../images/hexagons.svg) -48px -160px;
+    background: url(../images/hexagons.svg) 0px -200px;
 }
 
 div.tile-state-zeta {
-    background: url(../images/hexagons.svg) -48px -200px;
+    background: url(../images/hexagons.svg) 0px -240px;
 }
 
 div.tile-state-eta {
-    background: url(../images/hexagons.svg) -48px -240px;
+    background: url(../images/hexagons.svg) 0px -280px;
 }
 
 div.tile-state-theta {
-    background: url(../images/hexagons.svg) -48px -280px;
-}
-
-div.highlight-tile {
-    background: url(../images/hexagons.svg) 1px -0px;
-    z-index: 10;
+    background: url(../images/hexagons.svg) 0px -320px;
 }
 
 div.ant {

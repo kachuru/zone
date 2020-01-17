@@ -46,6 +46,12 @@ class DefaultController extends AbstractController
         $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
         $map = $seededMapBuilder->initialise();
 
+        $state = $request->request->get('state');
+
+        if ($state == 'none') {
+            $state = MapTileState::TILE_STATE_HANDLES[$seed->getFirstState()];
+        }
+
         /**
          * $request needs to provide current tile ID and co-ordinates, tile state, and ant state
          */
@@ -54,7 +60,7 @@ class DefaultController extends AbstractController
                 $seededMapBuilder->move(
                     new MapTileState(
                         $map->getMapTileByTileId($request->request->get('tileId')),
-                        array_flip(MapTileState::TILE_STATE_HANDLES)[$request->request->get('state')]
+                        array_flip(MapTileState::TILE_STATE_HANDLES)[$state]
                     ),
                     new AntState((int) array_flip(Map::DIRECTION_HANDLES)[$request->request->get('orientation')])
                 )

@@ -20,7 +20,7 @@
 
     <div class="map">
         {% for tile in map.mapTiles %}
-            <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-state-alpha"
+            <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-state-none"
                  style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
 
                 <div id="tile-{{ tile.tileId }}-inner" class="tile-inner{% if tile.coordinates == initial.coordinates %} ant ant-orient-n{% endif %}"
