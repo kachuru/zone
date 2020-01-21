@@ -2,11 +2,8 @@
 
 namespace Kachuru\Zone\Langton;
 
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Util\Combinations;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseOnce;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnAnticlockwiseTwice;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseOnce;
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnClockwiseTwice;
 
 class Seed
 {
@@ -15,7 +12,7 @@ class Seed
      *   A: The transition set to use (1: 4 transitions, 2: 8 transitions)
      *   B: The transition configuration (00000-00023 or 00000-40319)
      *   C: The step-turn configuration to use (0-23)
-     * e.g. 10001709
+     * e.g. 10001709, 23251413
      *
      * @var int $seedId The ID representing the seed
      */
@@ -23,10 +20,13 @@ class Seed
 
     private $combinations;
 
-    public function __construct(int $seed, Combinations $combinations)
+    private $antTurnFactory;
+
+    public function __construct(int $seed, Combinations $combinations, AntTurnFactory $antTurnFactory)
     {
         $this->seedId = $seed;
         $this->combinations = $combinations;
+        $this->antTurnFactory = $antTurnFactory;
     }
 
     public function getSeedId()
@@ -60,12 +60,7 @@ class Seed
 
     public function getAntTurnOrder()
     {
-        return $this->combinations->calculate([
-            new AntTurnClockwiseOnce(),
-            new AntTurnAnticlockwiseOnce(),
-            new AntTurnClockwiseTwice(),
-            new AntTurnAnticlockwiseTwice()
-        ], $this->getAntTurnSeedId());
+        return $this->combinations->calculate($this->antTurnFactory->getAntTurns(), $this->getAntTurnSeedId());
     }
 
     private function getTransitionSetId()

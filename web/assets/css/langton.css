@@ -46,8 +46,20 @@ div.ant {
 }
 
 div#ant-location {
-    float: left;
-    display: none;
+    visibility: hidden;
+    position: fixed;
+    border: 1px black solid;
+    background: white;
+    padding: 5px;
+    width: 200px;
+}
+
+span.heading {
+    display: inline-block;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 10px;
+    width: 100px;
 }
 
 div.ant-orient-n {
