@@ -3,6 +3,7 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Util\Combinations;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\MapStencil;
 
@@ -12,17 +13,21 @@ class SeedFactory
 
     private $combinations;
 
+    private $antTurnFactory;
+
     public function __construct(
         MapStencil $map,
-        Combinations $combinations
+        Combinations $combinations,
+        AntTurnFactory $antTurnFactory
     ) {
         $this->map = $map;
         $this->combinations = $combinations;
+        $this->antTurnFactory = $antTurnFactory;
     }
 
     public function getSeed(int $seed): Seed
     {
-        return new Seed($seed, $this->combinations);
+        return new Seed($seed, $this->combinations, $this->antTurnFactory);
     }
 
     public function getSeededMapBuilder(Seed $seed): SeededMapBuilder
