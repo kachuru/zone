@@ -7,9 +7,8 @@ use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\Seed;
-use Kachuru\Zone\Langton\SeedFactory;
+use Kachuru\Zone\Langton\LangtonFactory;
 use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapStencil;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,10 +26,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/map");
      */
-    public function map(MapStencil $mapStencil)
+    public function map(LangtonFactory $langtonFactory)
     {
         return $this->render('default/map.html.twig', [
-            'map' => $mapStencil
+            'map' => $langtonFactory->getMap()
         ]);
     }
 
@@ -38,10 +37,10 @@ class DefaultController extends AbstractController
      * @Route("/langton/move");
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function langtonMove(Request $request, SeedFactory $seededMapBuilderFactory)
+    public function langtonMove(Request $request, LangtonFactory $langtonFactory)
     {
-        $seed = $seededMapBuilderFactory->getSeed((int) $request->request->get('seedId'));
-        $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
+        $seed = $langtonFactory->getSeed((int) $request->request->get('seedId'));
+        $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
         $map = $seededMapBuilder->initialise();
 
         $state = $request->request->get('state');
@@ -70,10 +69,10 @@ class DefaultController extends AbstractController
      * @Route("/langton");
      * @Route("/langton/{seedId}");
      */
-    public function langton(SeedFactory $seededMapBuilderFactory, int $seedId = null)
+    public function langton(LangtonFactory $langtonFactory, int $seedId = null)
     {
-        $seed = $seededMapBuilderFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
-        $seededMapBuilder = $seededMapBuilderFactory->getSeededMapBuilder($seed);
+        $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
+        $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
         $map = $seededMapBuilder->initialise();
 
         return $this->render('default/langton.html.twig', [

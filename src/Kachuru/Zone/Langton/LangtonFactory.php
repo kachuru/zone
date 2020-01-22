@@ -7,7 +7,7 @@ use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\MapStencil;
 
-class SeedFactory
+class LangtonFactory
 {
     private $map;
 
@@ -23,6 +23,11 @@ class SeedFactory
         $this->map = $map;
         $this->combinations = $combinations;
         $this->antTurnFactory = $antTurnFactory;
+    }
+
+    public function getMap()
+    {
+        return $this->map;
     }
 
     public function getSeed(int $seed): Seed
