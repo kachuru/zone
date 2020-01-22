@@ -28,6 +28,9 @@ services:
     Kachuru\:
         resource: '../src/Kachuru/*'
 
+    Kachuru\Util\:
+        resource: '../vendor/kachuru/util/src/Kachuru/Util/*'
+
     Kachuru\Zone\Map\MapSize:
         class: Kachuru\Zone\Map\MapSize
         arguments:
