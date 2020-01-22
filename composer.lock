@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de97c6da8a1b3df67531101bdddff50a",
+    "content-hash": "c187f5f3c83cfd84dac0b96e49b08976",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -524,6 +524,42 @@
                 "static"
             ],
             "time": "2020-01-08T19:53:19+00:00"
+        },
+        {
+            "name": "kachuru/util",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kachuru/util.git",
+                "reference": "1c8705a0767b9e5dc3e0a4d6762bdd71b9442a64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kachuru/util/zipball/1c8705a0767b9e5dc3e0a4d6762bdd71b9442a64",
+                "reference": "1c8705a0767b9e5dc3e0a4d6762bdd71b9442a64",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kachuru\\": "src/Kachuru/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rupert Jones",
+                    "email": "ru@kachuru.uk"
+                }
+            ],
+            "description": "Utility classes and methods that are fun to have around",
+            "time": "2020-01-22T12:04:11+00:00"
         },
         {
             "name": "psr/cache",
@@ -3396,7 +3432,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kachuru/util": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
