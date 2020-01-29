@@ -5,29 +5,29 @@ namespace Kachuru\Zone\Langton;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapFactory;
 
 class LangtonFactory
 {
-    private $map;
+    private $mapFactory;
 
     private $combinations;
 
     private $antTurnFactory;
 
     public function __construct(
-        MapStencil $map,
+        MapFactory $mapFactory,
         Combinations $combinations,
         AntTurnFactory $antTurnFactory
     ) {
-        $this->map = $map;
+        $this->mapFactory = $mapFactory;
         $this->combinations = $combinations;
         $this->antTurnFactory = $antTurnFactory;
     }
 
     public function getMap()
     {
-        return $this->map;
+        return $this->mapFactory->getMap();
     }
 
     public function getSeed(int $seed): Seed
@@ -37,12 +37,12 @@ class LangtonFactory
 
     public function getSeededMapBuilder(Seed $seed): SeededMapBuilder
     {
-        return new SeededMapBuilder($seed, $this->getMoveCalculator($seed));
+        return new SeededMapBuilder($seed, $this->mapFactory, $this->getMoveCalculator($seed));
     }
 
     public function getMoveCalculator(Seed $seed): MoveCalculator
     {
-        return new MoveCalculator($this->map, $this->getTransitionHandler($seed));
+        return new MoveCalculator($this->mapFactory->getMap(), $this->getTransitionHandler($seed));
     }
 
     public function getTransitionHandler(Seed $seed): TransitionHandler
