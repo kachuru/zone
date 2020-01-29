@@ -3,9 +3,9 @@
 namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
-use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
+use Kachuru\Zone\Map\MapTileState;
 
 class TransitionHandler
 {
@@ -22,7 +22,8 @@ class TransitionHandler
                 $this->getStateHandle($stateId),
                 $this->buildStateTransition(
                     $turn[($idx % count($turn))],
-                    $transitionOrder[$this->getNextTransitionOffset($idx, count($transitionOrder))])
+                    $transitionOrder[$this->getNextTransitionOffset($idx, count($transitionOrder))]
+                )
             );
         }
     }

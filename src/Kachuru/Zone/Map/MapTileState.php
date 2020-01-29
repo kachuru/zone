@@ -1,9 +1,6 @@
 <?php
 
-namespace Kachuru\Zone\Langton;
-
-use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\MapTile;
+namespace Kachuru\Zone\Map;
 
 class MapTileState
 {

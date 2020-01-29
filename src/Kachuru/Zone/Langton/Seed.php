@@ -4,6 +4,7 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Util\Combinations;
+use Kachuru\Zone\Map\MapTileState;
 
 class Seed
 {

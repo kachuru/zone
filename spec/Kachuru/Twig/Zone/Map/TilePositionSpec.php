@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Kachuru\Zone\Map\Twig;
+namespace spec\Kachuru\Twig\Zone\Map;
 
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Twig\Zone\Map\TilePosition;

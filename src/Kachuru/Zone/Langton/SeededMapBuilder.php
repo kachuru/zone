@@ -3,8 +3,8 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapBuilder;
 use Kachuru\Zone\Map\MapFactory;
+use Kachuru\Zone\Map\MapTileState;
 
 class SeededMapBuilder implements MapBuilder
 {

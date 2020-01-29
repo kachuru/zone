@@ -3,6 +3,7 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\MapTileState;
 
 /**
  * Representing the ant's next move.
