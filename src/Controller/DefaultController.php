@@ -25,11 +25,15 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/map");
+     * @Route("/map/{seedId}");
      */
-    public function map(LangtonFactory $langtonFactory)
+    public function map(LangtonFactory $langtonFactory, int $seedId = null)
     {
+        $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
+        $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
+
         return $this->render('default/map.html.twig', [
-            'map' => $langtonFactory->getMap()
+            'map' => $seededMapBuilder->build(6)
         ]);
     }
 
@@ -42,7 +46,6 @@ class DefaultController extends AbstractController
         $seed = $langtonFactory->getSeed((int) $request->request->get('seedId'));
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
         $map = $seededMapBuilder->initialise();
-
         $state = $request->request->get('state');
 
         if ($state == 'none') {
@@ -73,6 +76,7 @@ class DefaultController extends AbstractController
     {
         $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
+
         $map = $seededMapBuilder->initialise();
 
         return $this->render('default/langton.html.twig', [

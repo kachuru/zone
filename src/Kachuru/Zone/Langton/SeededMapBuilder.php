@@ -4,18 +4,20 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapBuilder;
+use Kachuru\Zone\Map\MapFactory;
 
 class SeededMapBuilder implements MapBuilder
 {
     private $seed;
-    /**
-     * @var MoveCalculator
-     */
+
     private $moveCalculator;
 
-    public function __construct(Seed $seed, MoveCalculator $moveCalculator)
+    private $mapFactory;
+
+    public function __construct(Seed $seed, MapFactory $mapFactory, MoveCalculator $moveCalculator)
     {
         $this->seed = $seed;
+        $this->mapFactory = $mapFactory;
         $this->moveCalculator = $moveCalculator;
     }
 
@@ -29,8 +31,15 @@ class SeededMapBuilder implements MapBuilder
         return $this->moveCalculator->getMove($mapTileState, $antState);
     }
 
-    public function build(): Map
+    public function build($steps): Map
     {
-        // TODO: Implement build() method.
+        $map = $this->initialise();
+        $currentTile = $map->getCentreTile();
+
+        for ($step = 0; $step < $steps; $step++) {
+            // $langtonMove = $this->move($currentTile, $antState);
+        }
+
+        return $map;
     }
 }
