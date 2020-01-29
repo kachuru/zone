@@ -47,7 +47,7 @@ class Seed
         return $this->combinations->calculate($this->getBaseTransitions(), $this->getTransitionSeedId());
     }
 
-    public function getFirstState(): string
+    public function getFirstState(): int
     {
         return $this->getMapTileStateTransitionOrder()[0];
     }
