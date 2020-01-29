@@ -3,8 +3,8 @@
 namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
-use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
+use Kachuru\Zone\Map\MapTileState;
 
 class StateTransition
 {

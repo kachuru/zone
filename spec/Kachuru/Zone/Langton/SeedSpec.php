@@ -2,10 +2,10 @@
 
 namespace spec\Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
+use Kachuru\Zone\Map\MapTileState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

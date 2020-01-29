@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Kachuru\Zone\Langton;
+namespace spec\Kachuru\Zone\Map;
 
-use Kachuru\Zone\Langton\MapTileState;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\MapTileState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

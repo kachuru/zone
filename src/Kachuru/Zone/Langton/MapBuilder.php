@@ -1,14 +1,13 @@
 <?php
 
-namespace Kachuru\Zone\Map;
+namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Langton\AntState;
-use Kachuru\Zone\Langton\MapTileState;
+use Kachuru\Zone\Map\Map;
+use Kachuru\Zone\Map\MapTileState;
 
 interface MapBuilder
 {
     public function initialise(): Map;
     public function build(int $steps): Map;
     public function move(MapTileState $mapTileState, AntState $antState);
-
 }
