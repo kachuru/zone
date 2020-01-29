@@ -122,4 +122,11 @@ class SeedSpec extends ObjectBehavior
             ]
         );
     }
+
+    function it_returns_the_correct_first_state()
+    {
+        $this->beConstructedWith(10000000, new Combinations(), new AntTurnFactory());
+
+        $this->getFirstState()->shouldReturn(MapTileState::TILE_STATE_ALPHA);
+    }
 }
