@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    @import url({{ asset('/assets/css/map.css') }});
-    @import url({{ asset('/assets/css/langton.css') }});
+    <link rel="stylesheet" href="{{ asset('/assets/css/map.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/assets/css/langton.css') }}" />
 {% endblock %}
 
 {% block javascripts %}
