@@ -10,11 +10,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
         <meta charset="UTF-8">
         <title>{% block title %}Zone{% endblock %}</title>
-        <style type="text/css">
-            @import url({{ asset('/assets/css/base.css') }});
+        <link  rel="stylesheet" herf="{{ asset('/assets/css/base.css') }}" />
         {% block stylesheets %}
         {% endblock %}
-        </style>
     </head>
     <body>
 <!-- Google Tag Manager (noscript) -->
