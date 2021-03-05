@@ -60,6 +60,7 @@ class DefaultController extends AbstractController
         return $this->json(
             $this->getLangtonMoveDto(
                 $seededMapBuilder->move(
+                    $map,
                     new MapTileState(
                         $map->getMapTileByTileId($request->request->get('tileId')),
                         array_flip(MapTileState::TILE_STATE_HANDLES)[$state]

@@ -37,24 +37,8 @@ services:
             - 80
             - 60
 
-    map.size.langton:
-        class: Kachuru\Zone\Map\MapSize
-        arguments:
-            - 80
-            - 60
-
     Kachuru\Twig\Zone\Map\TilePosition:
         class: Kachuru\Twig\Zone\Map\TilePosition
         arguments:
             - 33
             - 38
-
-    move.calculator.standard:
-        class: Kachuru\Zone\Map\MapStencil
-        arguments:
-            - "@map.size.langton"
-
-    Kachuru\Zone\Langton\MoveCalculator:
-        class: Kachuru\Zone\Langton\MoveCalculator
-        arguments:
-            - "@move.calculator.standard"

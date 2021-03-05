@@ -9,31 +9,18 @@ use Kachuru\Zone\Map\MapTileState;
 
 class MoveCalculator
 {
-    private $map;
-
     private $transitionHandler;
 
-    public function __construct(Map $map, TransitionHandler $transitionHandler)
+    public function __construct(TransitionHandler $transitionHandler)
     {
-        $this->map = $map;
         $this->transitionHandler = $transitionHandler;
     }
 
-    public function getMap(): Map
-    {
-        return $this->map;
-    }
-
-    public function getMapTileByTileId(int $tileId): MapTile
-    {
-        return $this->map->getMapTileByTileId($tileId);
-    }
-
-    public function getMove(MapTileState $mapTileState, AntState $antState): LangtonMove
+    public function getMove(Map $map, MapTileState $mapTileState, AntState $antState): LangtonMove
     {
         return new LangtonMove(
             $this->getNewAntState($mapTileState, $antState),
-            $this->getNewAntPosition($mapTileState, $antState),
+            $this->getNewAntPosition($map, $mapTileState, $antState),
             $this->getCurrentTileNewState($mapTileState)
         );
     }
@@ -46,9 +33,9 @@ class MoveCalculator
         );
     }
 
-    private function getNewAntPosition(MapTileState $mapState, AntState $antState): MapTile
+    private function getNewAntPosition(Map $map, MapTileState $mapState, AntState $antState): MapTile
     {
-        return $this->map->getMapTileInDirection(
+        return $map->getMapTileInDirection(
             $mapState->getMapTileCoordinates(),
             $this->getNewAntState($mapState, $antState)->getOrientation()
         );
