@@ -17,9 +17,9 @@ class SeededMapBuilder implements MapBuilder
         $this->moveCalculator = $moveCalculator;
     }
 
-    public function move(MapTileState $mapTileState, AntState $antState): LangtonMove
+    public function move(Map $map, MapTileState $mapTileState, AntState $antState): LangtonMove
     {
-        return $this->moveCalculator->getMove($mapTileState, $antState);
+        return $this->moveCalculator->getMove($map, $mapTileState, $antState);
     }
 
     public function build(Map $map, $steps): Map

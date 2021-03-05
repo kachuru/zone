@@ -24,16 +24,18 @@ class MoveCalculatorSpec extends ObjectBehavior
     function let()
     {
         $this->beConstructedWith(
-            new MapStencil(new MapSize(4, 3), new MapTileFactory()),
             new TransitionHandler(new Seed(10000000, new Combinations(), new AntTurnFactory()))
         );
     }
 
     function it_returns_the_correct_next_move()
     {
+        $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
+
         $currentMapTile = new MapTile(5, new MapCoordinates(1, 1));
 
         $this->getMove(
+            $map,
             new MapTileState($currentMapTile, MapTileState::TILE_STATE_ALPHA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
@@ -43,6 +45,7 @@ class MoveCalculatorSpec extends ObjectBehavior
         ));
 
         $this->getMove(
+            $map,
             new MapTileState($currentMapTile, MapTileState::TILE_STATE_BETA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
@@ -52,6 +55,7 @@ class MoveCalculatorSpec extends ObjectBehavior
         ));
 
         $this->getMove(
+            $map,
             new MapTileState($currentMapTile, MapTileState::TILE_STATE_GAMMA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
@@ -61,6 +65,7 @@ class MoveCalculatorSpec extends ObjectBehavior
         ));
 
         $this->getMove(
+            $map,
             new MapTileState($currentMapTile, MapTileState::TILE_STATE_DELTA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
@@ -72,9 +77,12 @@ class MoveCalculatorSpec extends ObjectBehavior
 
     function it_throws_exception_if_ant_goes_out_of_bounds()
     {
+        $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
+
         $currentMapTile = new MapTile(2, new MapCoordinates(2, 0));
 
         $this->shouldThrow('\RuntimeException')->duringGetMove(
+            $map,
             new MapTileState($currentMapTile, MapTileState::TILE_STATE_ALPHA),
             new AntState(Map::DIRECTION_NORTHWEST)
         );

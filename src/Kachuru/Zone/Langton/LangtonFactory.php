@@ -42,7 +42,7 @@ class LangtonFactory
 
     public function getMoveCalculator(Seed $seed): MoveCalculator
     {
-        return new MoveCalculator($this->mapStencil, $this->getTransitionHandler($seed));
+        return new MoveCalculator($this->getTransitionHandler($seed));
     }
 
     public function getTransitionHandler(Seed $seed): TransitionHandler
