@@ -17,19 +17,13 @@ class SeededMapBuilder implements MapBuilder
         $this->moveCalculator = $moveCalculator;
     }
 
-    public function initialise(): Map
-    {
-        return $this->moveCalculator->getMap();
-    }
-
     public function move(MapTileState $mapTileState, AntState $antState): LangtonMove
     {
         return $this->moveCalculator->getMove($mapTileState, $antState);
     }
 
-    public function build($steps): Map
+    public function build(Map $map, $steps): Map
     {
-        $map = $this->initialise();
         $currentTile = $map->getCentreTile();
 
         for ($step = 0; $step < $steps; $step++) {
