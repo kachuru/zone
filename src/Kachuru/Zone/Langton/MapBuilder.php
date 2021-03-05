@@ -7,7 +7,6 @@ use Kachuru\Zone\Map\MapTileState;
 
 interface MapBuilder
 {
-    public function initialise(): Map;
-    public function build(int $steps): Map;
+    public function build(Map $map, int $steps): Map;
     public function move(MapTileState $mapTileState, AntState $antState);
 }

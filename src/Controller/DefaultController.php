@@ -30,10 +30,11 @@ class DefaultController extends AbstractController
     public function map(LangtonFactory $langtonFactory, int $seedId = null)
     {
         $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
+        $map = $langtonFactory->getMapStencil();
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
 
         return $this->render('default/map.html.twig', [
-            'map' => $seededMapBuilder->build(6)
+            'map' => $seededMapBuilder->build($map, 6)
         ]);
     }
 
@@ -44,8 +45,9 @@ class DefaultController extends AbstractController
     public function langtonMove(Request $request, LangtonFactory $langtonFactory)
     {
         $seed = $langtonFactory->getSeed((int) $request->request->get('seedId'));
+        $map = $langtonFactory->getMapStencil();
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
-        $map = $seededMapBuilder->initialise();
+
         $state = $request->request->get('state');
 
         if ($state == 'none') {
@@ -75,9 +77,7 @@ class DefaultController extends AbstractController
     public function langton(LangtonFactory $langtonFactory, int $seedId = null)
     {
         $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
-        $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
-
-        $map = $seededMapBuilder->initialise();
+        $map = $langtonFactory->getMapStencil();
 
         return $this->render('default/langton.html.twig', [
             'map' => $map,
