@@ -37,5 +37,7 @@ interface Map
 
     public function getCentreTile(): MapTile;
 
+    public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable;
+
     public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile;
 }

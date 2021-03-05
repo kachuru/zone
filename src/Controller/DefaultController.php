@@ -47,7 +47,6 @@ class DefaultController extends AbstractController
         $seed = $langtonFactory->getSeed((int) $request->request->get('seedId'));
         $map = $langtonFactory->getMapStencil();
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
-
         $state = $request->request->get('state');
 
         if ($state == 'none') {

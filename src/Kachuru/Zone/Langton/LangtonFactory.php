@@ -6,6 +6,8 @@ use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapTileStates;
+use Kachuru\Zone\Map\StatefulMap;
 
 class LangtonFactory
 {
@@ -28,6 +30,11 @@ class LangtonFactory
     public function getMapStencil(): MapStencil
     {
         return $this->mapStencil;
+    }
+
+    public function getStatefulMap(): StatefulMap
+    {
+        return new StatefulMap($this->mapStencil, new MapTileStates());
     }
 
     public function getSeed(int $seed): Seed

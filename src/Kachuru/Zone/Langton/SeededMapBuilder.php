@@ -26,8 +26,15 @@ class SeededMapBuilder implements MapBuilder
     {
         $currentTile = $map->getCentreTile();
 
+        $antState = new AntState(Map::DIRECTION_NORTH);
+        $mapTileState = new MapTileState($currentTile, $this->seed->getFirstState());
+
         for ($step = 0; $step < $steps; $step++) {
-            // $langtonMove = $this->move($currentTile, $antState);
+            $langtonMove = $this->move($map, $mapTileState, $antState);
+            $newLocationTile = $langtonMove->getNewLocation();
+            $oldLocationNewState = $langtonMove->getOldLocationUpdatedState();
+
+            // Create a stateful map tile and set it into the map
         }
 
         return $map;
