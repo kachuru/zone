@@ -3,7 +3,6 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapFactory;
 use Kachuru\Zone\Map\MapTileState;
 
 class SeededMapBuilder implements MapBuilder
@@ -12,12 +11,9 @@ class SeededMapBuilder implements MapBuilder
 
     private $moveCalculator;
 
-    private $mapFactory;
-
-    public function __construct(Seed $seed, MapFactory $mapFactory, MoveCalculator $moveCalculator)
+    public function __construct(Seed $seed, MoveCalculator $moveCalculator)
     {
         $this->seed = $seed;
-        $this->mapFactory = $mapFactory;
         $this->moveCalculator = $moveCalculator;
     }
 
