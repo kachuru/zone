@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    app.ant_steps: '%env(APP_ANT_STEPS)%'
 
 services:
     # default configuration for services in *this* file
@@ -34,11 +35,11 @@ services:
     Kachuru\Zone\Map\MapSize:
         class: Kachuru\Zone\Map\MapSize
         arguments:
-            - 80
-            - 60
+            - '%env(APP_MAP_SIZE_WIDTH)%'
+            - '%env(APP_MAP_SIZE_HEIGHT)%'
 
     Kachuru\Twig\Zone\Map\TilePosition:
         class: Kachuru\Twig\Zone\Map\TilePosition
         arguments:
-            - 33
-            - 38
+            - '%env(APP_MAP_TILE_LEFT_OFFSET)%'
+            - '%env(APP_MAP_TILE_TOP_OFFSET)%'

@@ -5,6 +5,7 @@ composer.phar
 cache/
 vendor/
 .DS_Store
+.env.local
 
 ###> squizlabs/php_codesniffer ###
 /.phpcs-cache

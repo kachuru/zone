@@ -83,7 +83,8 @@ class DefaultController extends AbstractController
         return $this->render('default/langton.html.twig', [
             'map' => $map,
             'initial' => $map->getCentreTile(),
-            'seedId' => $seed->getSeedId()
+            'seedId' => $seed->getSeedId(),
+            'steps' => $this->getParameter('app.ant_steps')
         ]);
     }
 
