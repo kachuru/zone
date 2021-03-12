@@ -32,12 +32,12 @@ class MapStencil implements Map
         $this->mapTileFactory = $mapTileFactory;
     }
 
-    public function getMapTileByTileId(string $tileId): MapTile
+    public function getMapTileByTileId(string $tileId): BaseMapTile
     {
         return $this->mapTileFactory->createTile($tileId, $this->getCoordinatesFromTileId($tileId));
     }
 
-    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): MapTile
+    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): BaseMapTile
     {
         return $this->mapTileFactory->createTile($this->getTileIdFromCoordinates($mapCoordinates), $mapCoordinates);
     }
@@ -61,7 +61,7 @@ class MapStencil implements Map
         }
     }
 
-    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile
+    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): BaseMapTile
     {
         $adjustment = $this->getAdjustmentList($mapCoordinates)[$direction];
 
@@ -73,7 +73,7 @@ class MapStencil implements Map
         );
     }
 
-    public function getCentreTile(): MapTile
+    public function getCentreTile(): BaseMapTile
     {
         return $this->getMapTileByCoordinates(
             $this->mapTileFactory->createMapCoordinates(

@@ -9,7 +9,7 @@ class MapTileStates
         return false;
     }
 
-    public function getTile(int $tileId): ?MapTile
+    public function getTile(int $tileId): ?BaseMapTile
     {
         return null;
     }

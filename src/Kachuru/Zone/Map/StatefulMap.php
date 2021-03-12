@@ -19,7 +19,7 @@ class StatefulMap implements Map
         return [];
     }
 
-    public function getMapTileByTileId(string $tileId): MapTile
+    public function getMapTileByTileId(string $tileId): BaseMapTile
     {
         if (!$this->mapTileStates->hasTile($tileId)) {
             // Create a stateful map tile and set it into the collection
@@ -28,13 +28,13 @@ class StatefulMap implements Map
         return $this->mapTileStates->getTile($tileId);
     }
 
-    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): MapTile
+    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): BaseMapTile
     {
         $mapTile = $this->mapStencil->getMapTileByCoordinates($mapCoordinates);
         return $this->getMapTileByTileId($mapTile->getTileId());
     }
 
-    public function getCentreTile(): MapTile
+    public function getCentreTile(): BaseMapTile
     {
         return $this->mapStencil->getCentreTile();
     }
@@ -44,7 +44,7 @@ class StatefulMap implements Map
         return $this->mapStencil->getAdjacentTiles($mapCoordinates);
     }
 
-    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile
+    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): BaseMapTile
     {
         return $this->mapStencil->getMapTileInDirection($mapCoordinates, $direction);
     }

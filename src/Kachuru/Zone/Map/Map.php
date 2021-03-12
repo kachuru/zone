@@ -31,13 +31,13 @@ interface Map
 
     public function getMapTiles(): iterable;
 
-    public function getMapTileByTileId(string $tileId): MapTile;
+    public function getMapTileByTileId(string $tileId): BaseMapTile;
 
-    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): MapTile;
+    public function getMapTileByCoordinates(MapCoordinates $mapCoordinates): BaseMapTile;
 
-    public function getCentreTile(): MapTile;
+    public function getCentreTile(): BaseMapTile;
 
     public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable;
 
-    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile;
+    public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): BaseMapTile;
 }

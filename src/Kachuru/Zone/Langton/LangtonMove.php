@@ -2,8 +2,8 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\MapTile;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\BaseMapTile;
+use Kachuru\Zone\Map\MapTileWithState;
 
 /**
  * Representing the ant's next move.
@@ -18,18 +18,18 @@ class LangtonMove
      */
     private $antNewState;
     /**
-     * @var MapTile
+     * @var BaseMapTile
      */
     private $newLocation;
     /**
-     * @var MapTileState
+     * @var MapTileWithState
      */
     private $oldLocationUpdatedState;
 
     public function __construct(
         AntState $antNewState,
-        MapTile $newLocation,
-        MapTileState $oldLocationUpdatedState
+        BaseMapTile $newLocation,
+        MapTileWithState $oldLocationUpdatedState
     ) {
         $this->antNewState = $antNewState;
         $this->newLocation = $newLocation;
@@ -45,17 +45,17 @@ class LangtonMove
     }
 
     /**
-     * @return MapTile
+     * @return BaseMapTile
      */
-    public function getNewLocation(): MapTile
+    public function getNewLocation(): BaseMapTile
     {
         return $this->newLocation;
     }
 
     /**
-     * @return MapTileState
+     * @return MapTileWithState
      */
-    public function getOldLocationUpdatedState(): MapTileState
+    public function getOldLocationUpdatedState(): MapTileWithState
     {
         return $this->oldLocationUpdatedState;
     }
