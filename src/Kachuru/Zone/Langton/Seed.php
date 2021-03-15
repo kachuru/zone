@@ -4,7 +4,7 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Util\Combinations;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTileWithState;
 
 class Seed
 {
@@ -55,8 +55,8 @@ class Seed
     public function getBaseTransitions(): array
     {
         return ($this->getTransitionSetId() == 1)
-            ? array_slice(MapTileState::TILE_STATES, 0, 4)
-            : MapTileState::TILE_STATES;
+            ? array_slice(MapTileWithState::TILE_STATES, 0, 4)
+            : MapTileWithState::TILE_STATES;
     }
 
     public function getAntTurnOrder()

@@ -15,7 +15,7 @@
 
     <div class="map">
 {% for tile in map.mapTiles %}
-    <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-grid"
+    <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-grid tile-state-{% if tile.state is defined %}{{ tile.stateHandle }}{% else %}none{% endif %}"
          style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
 
         <div id="tile-{{ tile.tileId }}-inner" class="tile-inner"
