@@ -5,7 +5,7 @@ namespace App\Controller;
 use Kachuru\Zone\Dto\Langton\LangtonMove as LangtonMoveDto;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTileWithState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\LangtonFactory;
 use Kachuru\Zone\Map\Map;
@@ -30,11 +30,11 @@ class DefaultController extends AbstractController
     public function map(LangtonFactory $langtonFactory, int $seedId = null)
     {
         $seed = $langtonFactory->getSeed($seedId ?? Seed::getTransitionsRandomSeed());
-        $map = $langtonFactory->getMapStencil();
+        $map = $langtonFactory->getStatefulMap($seed);
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
 
         return $this->render('default/map.html.twig', [
-            'map' => $seededMapBuilder->build($map, 6)
+            'map' => $seededMapBuilder->build($map, $this->getParameter('app.ant_steps'))
         ]);
     }
 
@@ -47,11 +47,10 @@ class DefaultController extends AbstractController
         $seed = $langtonFactory->getSeed((int) $request->request->get('seedId'));
         $map = $langtonFactory->getMapStencil();
         $seededMapBuilder = $langtonFactory->getSeededMapBuilder($seed);
-
         $state = $request->request->get('state');
 
         if ($state == 'none') {
-            $state = MapTileState::TILE_STATE_HANDLES[$seed->getFirstState()];
+            $state = MapTileWithState::TILE_STATE_HANDLES[$seed->getFirstState()];
         }
 
         /**
@@ -61,9 +60,9 @@ class DefaultController extends AbstractController
             $this->getLangtonMoveDto(
                 $seededMapBuilder->move(
                     $map,
-                    new MapTileState(
+                    new MapTileWithState(
                         $map->getMapTileByTileId($request->request->get('tileId')),
-                        array_flip(MapTileState::TILE_STATE_HANDLES)[$state]
+                        array_flip(MapTileWithState::TILE_STATE_HANDLES)[$state]
                     ),
                     new AntState((int) array_flip(Map::DIRECTION_HANDLES)[$request->request->get('orientation')])
                 )
@@ -93,7 +92,7 @@ class DefaultController extends AbstractController
         return new LangtonMoveDto(
             $langtonMove->getAntNewState()->getOrientationHandle(),
             $langtonMove->getNewLocation()->getTileId(),
-            $langtonMove->getOldLocationUpdatedState()->getMapTileId(),
+            $langtonMove->getOldLocationUpdatedState()->getTileId(),
             $langtonMove->getOldLocationUpdatedState()->getStateHandle()
         );
     }

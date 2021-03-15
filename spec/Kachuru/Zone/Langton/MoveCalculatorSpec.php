@@ -13,9 +13,9 @@ use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
 use Kachuru\Zone\Map\MapStencil;
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\BaseMapTile;
 use Kachuru\Zone\Map\MapTileFactory;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTileWithState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -32,46 +32,46 @@ class MoveCalculatorSpec extends ObjectBehavior
     {
         $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
 
-        $currentMapTile = new MapTile(5, new MapCoordinates(1, 1));
+        $currentMapTile = new BaseMapTile(5, new MapCoordinates(1, 1));
 
         $this->getMove(
             $map,
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_ALPHA),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_ALPHA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
             new AntState(Map::DIRECTION_NORTHEAST),
-            new MapTile(6, new MapCoordinates(2, 1)),
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_BETA)
+            new BaseMapTile(6, new MapCoordinates(2, 1)),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_BETA)
         ));
 
         $this->getMove(
             $map,
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_BETA),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_BETA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
             new AntState(Map::DIRECTION_NORTHWEST),
-            new MapTile(4, new MapCoordinates(0, 1)),
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_GAMMA)
+            new BaseMapTile(4, new MapCoordinates(0, 1)),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_GAMMA)
         ));
 
         $this->getMove(
             $map,
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_GAMMA),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_GAMMA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
             new AntState(Map::DIRECTION_SOUTHEAST),
-            new MapTile(10, new MapCoordinates(2, 2)),
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_DELTA)
+            new BaseMapTile(10, new MapCoordinates(2, 2)),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_DELTA)
         ));
 
         $this->getMove(
             $map,
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_DELTA),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_DELTA),
             new AntState(Map::DIRECTION_NORTH)
         )->shouldBeLike(new LangtonMove(
             new AntState(Map::DIRECTION_SOUTHWEST),
-            new MapTile(8, new MapCoordinates(0, 2)),
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_ALPHA)
+            new BaseMapTile(8, new MapCoordinates(0, 2)),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_ALPHA)
         ));
     }
 
@@ -79,11 +79,11 @@ class MoveCalculatorSpec extends ObjectBehavior
     {
         $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
 
-        $currentMapTile = new MapTile(2, new MapCoordinates(2, 0));
+        $currentMapTile = new BaseMapTile(2, new MapCoordinates(2, 0));
 
         $this->shouldThrow('\RuntimeException')->duringGetMove(
             $map,
-            new MapTileState($currentMapTile, MapTileState::TILE_STATE_ALPHA),
+            new MapTileWithState($currentMapTile, MapTileWithState::TILE_STATE_ALPHA),
             new AntState(Map::DIRECTION_NORTHWEST)
         );
     }

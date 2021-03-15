@@ -83,6 +83,16 @@ class MapStencil implements Map
         );
     }
 
+    public function getMapSize(): int
+    {
+        return $this->mapSize->getSize();
+    }
+
+    public function updateTile(MapTileWithState $mapTileWithState): void
+    {
+        // Do nothing
+    }
+
     private function getCoordinatesFromTileId(int $tileId): MapCoordinates
     {
         return $this->mapTileFactory->createMapCoordinates(

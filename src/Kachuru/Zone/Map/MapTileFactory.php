@@ -4,9 +4,9 @@ namespace Kachuru\Zone\Map;
 
 class MapTileFactory
 {
-    public function createTile(int $tileId, MapCoordinates $mapCoordinates): MapTile
+    public function createTile(int $tileId, MapCoordinates $mapCoordinates): BaseMapTile
     {
-        return new MapTile($tileId, $mapCoordinates);
+        return new BaseMapTile($tileId, $mapCoordinates);
     }
 
     public function createMapCoordinates(int $x, int $y): MapCoordinates

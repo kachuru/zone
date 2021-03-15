@@ -5,14 +5,18 @@ namespace Kachuru\Zone\Langton\Transition;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTileWithState;
 
 class TransitionHandler
 {
+    private $seed;
+
     private $stateTransitions = [];
 
     public function __construct(Seed $seed)
     {
+        $this->seed = $seed;
+
         $turn = $seed->getAntTurnOrder();
 
         $transitionOrder = $seed->getMapTileStateTransitionOrder();
@@ -46,7 +50,7 @@ class TransitionHandler
         return $this->stateTransitions[$handle]->getNextAntState($currentAntState);
     }
 
-    public function getMapTileNextState(MapTileState $mapTileState): MapTileState
+    public function getMapTileNextState(MapTileWithState $mapTileState): MapTileWithState
     {
         return $this->stateTransitions[$mapTileState->getStateHandle()]->getNextTileState($mapTileState);
     }
@@ -58,7 +62,7 @@ class TransitionHandler
 
     protected function getStateHandle(int $tileStateId)
     {
-        return MapTileState::TILE_STATE_HANDLES[$tileStateId];
+        return MapTileWithState::TILE_STATE_HANDLES[$tileStateId];
     }
 
     private function buildStateTransition(AntTurn $antTurn, int $nextStateId): StateTransition

@@ -3,11 +3,11 @@
 namespace spec\Kachuru\Zone\Map;
 
 use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\BaseMapTile;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class MapTileSpec extends ObjectBehavior
+class BaseMapTileSpec extends ObjectBehavior
 {
     function it_is_a_map_tile()
     {
