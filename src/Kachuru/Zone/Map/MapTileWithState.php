@@ -2,7 +2,7 @@
 
 namespace Kachuru\Zone\Map;
 
-class MapTileState
+class MapTileWithState implements MapTile
 {
     public const TILE_STATE_ALPHA = 0;
     public const TILE_STATE_BETA = 1;
@@ -55,12 +55,12 @@ class MapTileState
         return $this->mapTile;
     }
 
-    public function getMapTileId(): int
+    public function getTileId(): int
     {
         return $this->mapTile->getTileId();
     }
 
-    public function getMapTileCoordinates(): MapCoordinates
+    public function getCoordinates(): MapCoordinates
     {
         return $this->mapTile->getCoordinates();
     }

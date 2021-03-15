@@ -6,7 +6,7 @@ use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
 use Kachuru\Zone\Map\MapStencil;
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\BaseMapTile;
 use Kachuru\Zone\Map\MapTileFactory;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -137,8 +137,8 @@ class MapStencilSpec extends ObjectBehavior
         $this->shouldThrow('\RunTimeException')->duringGetMapTileInDirection(new MapCoordinates(0, 0), Map::DIRECTION_NORTH);
     }
 
-    private function makeTile($id, $x, $y): MapTile
+    private function makeTile($id, $x, $y): BaseMapTile
     {
-        return new MapTile($id, new MapCoordinates($x, $y));
+        return new BaseMapTile($id, new MapCoordinates($x, $y));
     }
 }
