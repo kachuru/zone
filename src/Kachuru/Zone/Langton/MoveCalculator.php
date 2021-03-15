@@ -3,9 +3,9 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapTile;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTile;
+use Kachuru\Zone\Map\MapTileWithState;
 
 class MoveCalculator
 {
@@ -16,7 +16,7 @@ class MoveCalculator
         $this->transitionHandler = $transitionHandler;
     }
 
-    public function getMove(Map $map, MapTileState $mapTileState, AntState $antState): LangtonMove
+    public function getMove(Map $map, MapTileWithState $mapTileState, AntState $antState): LangtonMove
     {
         return new LangtonMove(
             $this->getNewAntState($mapTileState, $antState),
@@ -25,7 +25,7 @@ class MoveCalculator
         );
     }
 
-    private function getNewAntState(MapTileState $mapTileState, AntState $currentAntState): AntState
+    private function getNewAntState(MapTileWithState $mapTileState, AntState $currentAntState): AntState
     {
         return $this->transitionHandler->getAntStateTransitionForMapTileState(
             $mapTileState->getStateHandle(),
@@ -33,15 +33,15 @@ class MoveCalculator
         );
     }
 
-    private function getNewAntPosition(Map $map, MapTileState $mapState, AntState $antState): MapTile
+    private function getNewAntPosition(Map $map, MapTileWithState $mapState, AntState $antState): MapTile
     {
         return $map->getMapTileInDirection(
-            $mapState->getMapTileCoordinates(),
+            $mapState->getCoordinates(),
             $this->getNewAntState($mapState, $antState)->getOrientation()
         );
     }
 
-    private function getCurrentTileNewState($mapTileState): MapTileState
+    private function getCurrentTileNewState($mapTileState): MapTileWithState
     {
         return $this->transitionHandler->getMapTileNextState($mapTileState);
     }

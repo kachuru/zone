@@ -5,7 +5,7 @@ namespace spec\Kachuru\Zone\Langton;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
-use Kachuru\Zone\Map\MapTileState;
+use Kachuru\Zone\Map\MapTileWithState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -17,10 +17,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_ALPHA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -31,10 +31,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_ALPHA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_DELTA,
-                MapTileState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_GAMMA,
             ]
         );
     }
@@ -45,10 +45,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_DELTA,
-                MapTileState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -59,10 +59,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_ALPHA,
-                MapTileState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -73,10 +73,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_DELTA,
-                MapTileState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -87,10 +87,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_ALPHA,
-                MapTileState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_DELTA,
             ]
         );
     }
@@ -101,10 +101,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_DELTA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_GAMMA,
-                MapTileState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_ALPHA,
             ]
         );
     }
@@ -115,10 +115,10 @@ class SeedSpec extends ObjectBehavior
 
         $this->getMapTileStateTransitionOrder()->shouldBeLike(
             [
-                MapTileState::TILE_STATE_DELTA,
-                MapTileState::TILE_STATE_BETA,
-                MapTileState::TILE_STATE_ALPHA,
-                MapTileState::TILE_STATE_GAMMA,
+                MapTileWithState::TILE_STATE_DELTA,
+                MapTileWithState::TILE_STATE_BETA,
+                MapTileWithState::TILE_STATE_ALPHA,
+                MapTileWithState::TILE_STATE_GAMMA,
             ]
         );
     }
@@ -127,6 +127,6 @@ class SeedSpec extends ObjectBehavior
     {
         $this->beConstructedWith(10000000, new Combinations(), new AntTurnFactory());
 
-        $this->getFirstState()->shouldReturn(MapTileState::TILE_STATE_ALPHA);
+        $this->getFirstState()->shouldReturn(MapTileWithState::TILE_STATE_ALPHA);
     }
 }
