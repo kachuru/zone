@@ -32,8 +32,11 @@ services:
     Kachuru\Util\:
         resource: '../vendor/kachuru/util/src/Kachuru/Util/*'
 
-    Kachuru\Zone\Map\MapSize:
-        class: Kachuru\Zone\Map\MapSize
+    Kachuru\MapMaker\:
+        resource: '../vendor/kachuru/map-maker/src/Kachuru/MapMaker/*'
+
+    Kachuru\MapMaker\MapSize:
+        class: Kachuru\MapMaker\MapSize
         arguments:
             - '%env(APP_MAP_SIZE_WIDTH)%'
             - '%env(APP_MAP_SIZE_HEIGHT)%'

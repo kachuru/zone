@@ -3,7 +3,7 @@
 namespace spec\Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Langton\AntState;
-use Kachuru\Zone\Map\Map;
+use Kachuru\MapMaker\Map;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

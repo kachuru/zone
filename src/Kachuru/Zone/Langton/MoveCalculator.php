@@ -2,9 +2,9 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\Map;
+use Kachuru\MapMaker\Map;
+use Kachuru\MapMaker\MapTile;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\MapTile;
 
 class MoveCalculator
 {

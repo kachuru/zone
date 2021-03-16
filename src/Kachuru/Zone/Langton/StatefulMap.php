@@ -2,9 +2,9 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\MapGrid;
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\MapMaker\MapCoordinates;
+use Kachuru\MapMaker\MapGrid;
+use Kachuru\MapMaker\MapTile;
 
 class StatefulMap implements MapWithState
 {
@@ -32,7 +32,7 @@ class StatefulMap implements MapWithState
         }
     }
 
-    public function getMapTileByTileId(string $tileId): MapTile
+    public function getMapTileByTileId(int $tileId): MapTile
     {
         if (!$this->mapTileStates->hasTile($tileId)) {
             $this->mapTileStates->setTile(

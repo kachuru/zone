@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79371d1c07ac2ce77a395f4bc78b28ee",
+    "content-hash": "4857899094678c197000658fa28d8529",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -155,6 +155,53 @@
                 }
             ],
             "time": "2020-05-25T17:44:05+00:00"
+        },
+        {
+            "name": "kachuru/map-maker",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kachuru/map-maker.git",
+                "reference": "051fa8676c5d6ef91ac1ceb97cdc526989d3a00e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kachuru/map-maker/zipball/051fa8676c5d6ef91ac1ceb97cdc526989d3a00e",
+                "reference": "051fa8676c5d6ef91ac1ceb97cdc526989d3a00e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "friends-of-phpspec/phpspec-code-coverage": "^6.0",
+                "phpspec/phpspec": "^7.0",
+                "phpstan/phpstan": "^0.12.8",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kachuru\\": "src/Kachuru/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rupert Jones",
+                    "email": "ru@kachuru.uk"
+                }
+            ],
+            "description": "Classes for building maps",
+            "support": {
+                "issues": "https://github.com/kachuru/map-maker/issues",
+                "source": "https://github.com/kachuru/map-maker/tree/main"
+            },
+            "time": "2021-03-16T14:34:46+00:00"
         },
         {
             "name": "kachuru/util",
@@ -5080,7 +5127,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kachuru/util": 20
+        "kachuru/util": 20,
+        "kachuru/map-maker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

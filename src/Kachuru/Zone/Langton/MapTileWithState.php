@@ -2,8 +2,8 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\MapTile;
-use Kachuru\Zone\Map\MapCoordinates;
+use Kachuru\MapMaker\MapTile;
+use Kachuru\MapMaker\MapCoordinates;
 
 class MapTileWithState implements MapTile
 {

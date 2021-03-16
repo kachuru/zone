@@ -1,11 +1,14 @@
 {
+    "name": "kachuru/zone",
     "type": "project",
     "license": "proprietary",
+    "description": "Zone",
     "require": {
         "php": "^7.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "kachuru/util": "dev-main",
+        "kachuru/map-maker": "dev-main",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "5.2.*",
         "symfony/console": "5.2.*",
@@ -60,7 +63,7 @@
             "vendor/bin/phpcbf --standard=PSR2 src/"
         ],
         "stan": [
-            "vendor/bin/phpstan analyse src/ --level 2"
+            "vendor/bin/phpstan analyse src/ --level 4"
         ],
         "test": [
             "@sniff",

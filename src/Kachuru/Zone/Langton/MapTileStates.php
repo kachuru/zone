@@ -2,7 +2,7 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\MapMaker\MapTile;
 
 class MapTileStates
 {
