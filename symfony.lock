@@ -62,6 +62,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/event-dispatcher": {
+        "version": "1.0.0"
+    },
     "psr/log": {
         "version": "1.1.0"
     },
@@ -104,6 +107,9 @@
     "symfony/cache": {
         "version": "v4.2.1"
     },
+    "symfony/cache-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/config": {
         "version": "v4.2.1"
     },
@@ -125,11 +131,20 @@
     "symfony/dependency-injection": {
         "version": "v4.2.1"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/dotenv": {
         "version": "v4.2.1"
     },
+    "symfony/error-handler": {
+        "version": "v5.2.4"
+    },
     "symfony/event-dispatcher": {
         "version": "v4.2.1"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v2.2.0"
     },
     "symfony/filesystem": {
         "version": "v4.2.1"
@@ -155,17 +170,32 @@
             "ref": "ad330af340e55acbaabccf857f6ae2ab3cef34d6"
         }
     },
+    "symfony/http-client-contracts": {
+        "version": "v2.3.1"
+    },
     "symfony/http-foundation": {
         "version": "v4.2.1"
     },
     "symfony/http-kernel": {
         "version": "v4.2.1"
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.22.1"
+    },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.22.1"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"
     },
     "symfony/polyfill-php72": {
         "version": "v1.10.0"
+    },
+    "symfony/polyfill-php73": {
+        "version": "v1.22.1"
+    },
+    "symfony/polyfill-php80": {
+        "version": "v1.22.1"
     },
     "symfony/process": {
         "version": "v4.2.2"
@@ -182,8 +212,17 @@
             "ref": "5374e24d508ba8fd6ba9eb15170255fdb778316a"
         }
     },
+    "symfony/service-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/stopwatch": {
         "version": "v4.2.2"
+    },
+    "symfony/string": {
+        "version": "v5.2.4"
+    },
+    "symfony/translation-contracts": {
+        "version": "v2.3.0"
     },
     "symfony/twig-bridge": {
         "version": "v4.2.2"
