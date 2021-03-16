@@ -5,13 +5,13 @@ namespace spec\Kachuru\Zone\Map;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
-use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapGrid;
 use Kachuru\Zone\Map\BaseMapTile;
 use Kachuru\Zone\Map\MapTileFactory;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class MapStencilSpec extends ObjectBehavior
+class MapGridSpec extends ObjectBehavior
 {
     function let()
     {

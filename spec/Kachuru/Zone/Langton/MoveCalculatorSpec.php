@@ -13,7 +13,7 @@ use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapCoordinates;
 use Kachuru\Zone\Map\MapSize;
-use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapGrid;
 use Kachuru\Zone\Map\BaseMapTile;
 use Kachuru\Zone\Map\MapTileFactory;
 use PhpSpec\ObjectBehavior;
@@ -30,7 +30,7 @@ class MoveCalculatorSpec extends ObjectBehavior
 
     function it_returns_the_correct_next_move()
     {
-        $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
+        $map = new MapGrid(new MapSize(4, 3), new MapTileFactory());
 
         $currentMapTile = new BaseMapTile(5, new MapCoordinates(1, 1));
 
@@ -77,7 +77,7 @@ class MoveCalculatorSpec extends ObjectBehavior
 
     function it_throws_exception_if_ant_goes_out_of_bounds()
     {
-        $map = new MapStencil(new MapSize(4, 3), new MapTileFactory());
+        $map = new MapGrid(new MapSize(4, 3), new MapTileFactory());
 
         $currentMapTile = new BaseMapTile(2, new MapCoordinates(2, 0));
 

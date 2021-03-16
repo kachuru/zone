@@ -5,7 +5,7 @@ namespace Kachuru\Zone\Langton;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapGrid;
 
 class LangtonFactory
 {
@@ -18,14 +18,14 @@ class LangtonFactory
     public function __construct(
         Combinations $combinations,
         AntTurnFactory $antTurnFactory,
-        MapStencil $mapStencil
+        MapGrid $mapStencil
     ) {
         $this->combinations = $combinations;
         $this->antTurnFactory = $antTurnFactory;
         $this->mapStencil = $mapStencil;
     }
 
-    public function getMapStencil(): MapStencil
+    public function getMapStencil(): MapGrid
     {
         return $this->mapStencil;
     }
