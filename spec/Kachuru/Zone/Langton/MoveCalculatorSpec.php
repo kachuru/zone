@@ -10,12 +10,12 @@ use Kachuru\Zone\Langton\MoveCalculator;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\MapSize;
-use Kachuru\Zone\Map\MapGrid;
-use Kachuru\Zone\Map\BaseMapTile;
-use Kachuru\Zone\Map\MapTileFactory;
+use Kachuru\MapMaker\Map;
+use Kachuru\MapMaker\MapCoordinates;
+use Kachuru\MapMaker\MapSize;
+use Kachuru\MapMaker\MapGrid;
+use Kachuru\MapMaker\BaseMapTile;
+use Kachuru\MapMaker\MapTileFactory;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

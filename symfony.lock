@@ -32,6 +32,9 @@
     "friends-of-phpspec/phpspec-code-coverage": {
         "version": "v6.0.0"
     },
+    "kachuru/map-maker": {
+        "version": "dev-main"
+    },
     "kachuru/util": {
         "version": "dev-master"
     },

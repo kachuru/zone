@@ -2,7 +2,7 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\Map;
+use Kachuru\MapMaker\Map;
 
 /**
  * Representing the current state of the ant

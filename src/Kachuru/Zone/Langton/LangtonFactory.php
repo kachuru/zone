@@ -5,7 +5,7 @@ namespace Kachuru\Zone\Langton;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
-use Kachuru\Zone\Map\MapGrid;
+use Kachuru\MapMaker\MapGrid;
 
 class LangtonFactory
 {

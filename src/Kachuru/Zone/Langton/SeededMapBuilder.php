@@ -2,8 +2,8 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Map\Map;
-use Kachuru\Zone\Map\MapTile;
+use Kachuru\MapMaker\Map;
+use Kachuru\MapMaker\MapTile;
 
 class SeededMapBuilder implements MapBuilder
 {

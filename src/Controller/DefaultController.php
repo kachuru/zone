@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
+use Kachuru\MapMaker\Map;
 use Kachuru\Zone\Dto\Langton\LangtonMove as LangtonMoveDto;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileWithState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\LangtonFactory;
-use Kachuru\Zone\Map\Map;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

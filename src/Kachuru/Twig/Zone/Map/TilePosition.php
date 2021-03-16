@@ -2,7 +2,7 @@
 
 namespace Kachuru\Twig\Zone\Map;
 
-use Kachuru\Zone\Map\MapCoordinates;
+use Kachuru\MapMaker\MapCoordinates;
 use Twig\Extension\RuntimeExtensionInterface;
 
 class TilePosition implements RuntimeExtensionInterface
