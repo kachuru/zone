@@ -6,6 +6,7 @@ cache/
 vendor/
 .DS_Store
 .env.local
+build/
 
 ###> squizlabs/php_codesniffer ###
 /.phpcs-cache
