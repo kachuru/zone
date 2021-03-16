@@ -6,8 +6,6 @@ use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\MapStencil;
-use Kachuru\Zone\Map\MapTileStates;
-use Kachuru\Zone\Map\StatefulMap;
 
 class LangtonFactory
 {

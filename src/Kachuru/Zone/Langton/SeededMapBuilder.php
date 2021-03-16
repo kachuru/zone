@@ -4,7 +4,6 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Map\MapTile;
-use Kachuru\Zone\Map\MapTileWithState;
 
 class SeededMapBuilder implements MapBuilder
 {
@@ -23,7 +22,7 @@ class SeededMapBuilder implements MapBuilder
         return $this->moveCalculator->getMove($map, $mapTileWithState, $antState);
     }
 
-    public function build(Map $map, $steps): Map
+    public function build(MapWithState $map, $steps): Map
     {
         $antState = new AntState(Map::DIRECTION_NORTH);
         $mapTileWithState = $this->getMapTileWithState($map->getCentreTile());
@@ -33,9 +32,8 @@ class SeededMapBuilder implements MapBuilder
 
             $map->updateTile($langtonMove->getOldLocationUpdatedState());
 
-            $mapTileWithState = $map->getMapTileByTileId($langtonMove->getNewLocation()->getTileId());
-
             $antState = $langtonMove->getAntNewState();
+            $mapTileWithState = $map->getMapTileByTileId($langtonMove->getNewLocation()->getTileId());
         }
 
         return $map;

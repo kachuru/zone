@@ -3,9 +3,9 @@
 namespace Kachuru\Zone\Langton\Transition;
 
 use Kachuru\Zone\Langton\AntState;
+use Kachuru\Zone\Langton\MapTileWithState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
-use Kachuru\Zone\Map\MapTileWithState;
 
 class TransitionHandler
 {

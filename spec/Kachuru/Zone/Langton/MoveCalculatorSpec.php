@@ -5,6 +5,7 @@ namespace spec\Kachuru\Zone\Langton;
 use Kachuru\Util\Combinations;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
+use Kachuru\Zone\Langton\MapTileWithState;
 use Kachuru\Zone\Langton\MoveCalculator;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
@@ -15,7 +16,6 @@ use Kachuru\Zone\Map\MapSize;
 use Kachuru\Zone\Map\MapStencil;
 use Kachuru\Zone\Map\BaseMapTile;
 use Kachuru\Zone\Map\MapTileFactory;
-use Kachuru\Zone\Map\MapTileWithState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
