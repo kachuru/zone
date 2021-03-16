@@ -40,6 +40,4 @@ interface Map
     public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable;
 
     public function getMapTileInDirection(MapCoordinates $mapCoordinates, int $direction): MapTile;
-
-    public function updateTile(MapTileWithState $mapTileWithState): void;
 }

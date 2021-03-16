@@ -5,7 +5,6 @@ namespace Kachuru\Zone\Langton;
 use Kachuru\Zone\Map\Map;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\Zone\Map\MapTile;
-use Kachuru\Zone\Map\MapTileWithState;
 
 class MoveCalculator
 {

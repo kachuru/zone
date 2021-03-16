@@ -5,7 +5,7 @@ namespace App\Controller;
 use Kachuru\Zone\Dto\Langton\LangtonMove as LangtonMoveDto;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
-use Kachuru\Zone\Map\MapTileWithState;
+use Kachuru\Zone\Langton\MapTileWithState;
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Zone\Langton\LangtonFactory;
 use Kachuru\Zone\Map\Map;

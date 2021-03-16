@@ -1,10 +1,12 @@
 <?php
 
-namespace Kachuru\Zone\Map;
+namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Langton\Seed;
+use Kachuru\Zone\Map\MapCoordinates;
+use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapTile;
 
-class StatefulMap implements Map
+class StatefulMap implements MapWithState
 {
     private $mapStencil;
 

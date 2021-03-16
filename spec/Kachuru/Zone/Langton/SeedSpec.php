@@ -4,8 +4,8 @@ namespace spec\Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Langton\Seed;
 use Kachuru\Util\Combinations;
+use Kachuru\Zone\Langton\MapTileWithState;
 use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
-use Kachuru\Zone\Map\MapTileWithState;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
