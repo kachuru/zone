@@ -2,7 +2,7 @@
 
 namespace Kachuru\Zone\Map;
 
-class MapStencil implements Map
+class MapGrid implements Map
 {
     private const ADJACENT_COORDINATE_ADJUSTMENTS_EVEN = [
         Map::DIRECTION_NORTH => [0, -1],

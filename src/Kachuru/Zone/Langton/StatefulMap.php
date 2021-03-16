@@ -3,7 +3,7 @@
 namespace Kachuru\Zone\Langton;
 
 use Kachuru\Zone\Map\MapCoordinates;
-use Kachuru\Zone\Map\MapStencil;
+use Kachuru\Zone\Map\MapGrid;
 use Kachuru\Zone\Map\MapTile;
 
 class StatefulMap implements MapWithState
@@ -14,7 +14,7 @@ class StatefulMap implements MapWithState
 
     private $seed;
 
-    public function __construct(MapStencil $mapStencil, MapTileStates $mapTileStates, Seed $seed)
+    public function __construct(MapGrid $mapStencil, MapTileStates $mapTileStates, Seed $seed)
     {
         $this->mapStencil = $mapStencil;
         $this->mapTileStates = $mapTileStates;
