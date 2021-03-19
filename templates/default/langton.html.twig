@@ -21,10 +21,9 @@
     <div class="map">
         {% for tile in map.mapTiles %}
             <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-state-none"
-                 style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
+                 style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;"{% if tile.tileId == 0 %} onClick="$('#ant-location').css('visibility', 'visible');"{% endif %}>
 
-                <div id="tile-{{ tile.tileId }}-inner" class="tile-inner{% if tile.coordinates == initial.coordinates %} ant ant-orient-n{% endif %}"
-                     onClick="alert('T{{ tile.tileId }} - {{ tile.coordinates }}')">
+                <div id="tile-{{ tile.tileId }}-inner" class="tile-inner{% if tile.coordinates == initial.coordinates %} ant ant-orient-n{% endif %}">
 
                     {#<a name="{{ tile.tileId }}">T{{ tile.tileId }}</a><br />#}
                     {#{{ tile.coordinates }}<br />#}
