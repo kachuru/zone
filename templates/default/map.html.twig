@@ -13,6 +13,11 @@
 
 {% block body %}
 
+    <div id="map-data">
+        <div><span class="heading">Seed:</span><span id="seed-id">{{ seedId }}</span></div>
+        <div><span class="heading">Steps Taken:</span><span id="ant-steps-limit">{{ steps }}</span></div>
+    </div>
+
     <div class="map">
 {% for tile in map.mapTiles %}
     <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-grid tile-state-{% if tile.state is defined %}{{ tile.stateHandle }}{% else %}none{% endif %}"
