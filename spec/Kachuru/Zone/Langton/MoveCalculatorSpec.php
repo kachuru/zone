@@ -3,6 +3,7 @@
 namespace spec\Kachuru\Zone\Langton;
 
 use Kachuru\Util\Combinations;
+use Kachuru\Util\Math;
 use Kachuru\Zone\Langton\AntState;
 use Kachuru\Zone\Langton\LangtonMove;
 use Kachuru\Zone\Langton\MapTileWithState;
@@ -24,7 +25,7 @@ class MoveCalculatorSpec extends ObjectBehavior
     function let()
     {
         $this->beConstructedWith(
-            new TransitionHandler(new Seed(10000000, new Combinations(), new AntTurnFactory()))
+            new TransitionHandler(new Seed(10000000, new Combinations(new Math()), new AntTurnFactory()))
         );
     }
 
