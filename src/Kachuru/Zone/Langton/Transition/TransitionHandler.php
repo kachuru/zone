@@ -9,14 +9,10 @@ use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
 
 class TransitionHandler
 {
-    private $seed;
-
     private $stateTransitions = [];
 
     public function __construct(Seed $seed)
     {
-        $this->seed = $seed;
-
         $turn = $seed->getAntTurnOrder();
 
         $transitionOrder = $seed->getMapTileStateTransitionOrder();
