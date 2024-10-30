@@ -71,9 +71,9 @@
             "vendor/bin/phpstan analyse src/ --level 4"
         ],
         "compatibility": [
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 7.4-",
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.0-",
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.1-"
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.1-",
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.2-",
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.3-"
         ],
         "test": [
             "@sniff",
