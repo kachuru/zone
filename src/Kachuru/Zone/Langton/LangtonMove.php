@@ -4,22 +4,13 @@ namespace Kachuru\Zone\Langton;
 
 use Kachuru\MapMaker\MapTile;
 
-class LangtonMove
+readonly class LangtonMove
 {
-    private $antNewState;
-
-    private $newLocation;
-
-    private $oldLocationUpdatedState;
-
     public function __construct(
-        AntState $antNewState,
-        MapTile $newLocation,
-        MapTileWithState $oldLocationUpdatedState
+        private AntState $antNewState,
+        private MapTile $newLocation,
+        private MapTileWithState $oldLocationUpdatedState
     ) {
-        $this->antNewState = $antNewState;
-        $this->newLocation = $newLocation;
-        $this->oldLocationUpdatedState = $oldLocationUpdatedState;
     }
 
     public function getAntNewState(): AntState

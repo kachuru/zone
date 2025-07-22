@@ -7,22 +7,13 @@ use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 use Kachuru\MapMaker\MapGrid;
 
-class LangtonFactory
+readonly class LangtonFactory
 {
-    private $combinations;
-
-    private $antTurnFactory;
-
-    private $mapStencil;
-
     public function __construct(
-        Combinations $combinations,
-        AntTurnFactory $antTurnFactory,
-        MapGrid $mapStencil
+        private Combinations $combinations,
+        private AntTurnFactory $antTurnFactory,
+        private MapGrid $mapStencil
     ) {
-        $this->combinations = $combinations;
-        $this->antTurnFactory = $antTurnFactory;
-        $this->mapStencil = $mapStencil;
     }
 
     public function getMapStencil(): MapGrid
@@ -30,7 +21,7 @@ class LangtonFactory
         return $this->mapStencil;
     }
 
-    public function getSeed(int $seed): Seed
+    public function getSeed(string $seed): Seed
     {
         return new Seed($seed, $this->combinations, $this->antTurnFactory);
     }

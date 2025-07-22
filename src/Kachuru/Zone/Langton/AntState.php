@@ -10,14 +10,11 @@ use Kachuru\MapMaker\Map;
  *
  * @package Kachuru\Zone\Langton
  */
-class AntState
+readonly class AntState
 {
-    private $orientation;
-
-    public function __construct(int $orientation)
-    {
-        $this->orientation = $orientation;
-
+    public function __construct(
+        private int $orientation
+    ) {
         if (!in_array($orientation, Map::DIRECTIONS)) {
             throw new \InvalidArgumentException('Orientation for ant must be a map direction');
         }

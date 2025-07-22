@@ -1,6 +1,6 @@
 {
     "name": "kachuru/zone",
-    "type": "project",
+    "type": "symfony-bundle",
     "license": "proprietary",
     "description": "Zone",
     "require": {
@@ -37,39 +37,40 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Kachuru\\": "src/Kachuru/"
+            "Kachuru\\Zone\\": "src/Kachuru/Zone/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/",
-            "spec\\Kachuru\\": "spec/Kachuru/"
+            "spec\\Kachuru\\Zone\\": "spec/Kachuru/Zone/"
         }
     },
     "scripts": {
         "spec": [
+            "vendor/bin/phpspec run"
+        ],
+        "coverage": [
             "phpdbg -qrr vendor/bin/phpspec -c phpspec-phpdbg.yml run"
         ],
         "sniff": [
-            "vendor/bin/phpcs --standard=PSR2 src/"
+            "vendor/bin/phpcs --standard=PSR2 --extensions=php src/"
         ],
         "fix": [
-            "vendor/bin/phpcbf --standard=PSR2 src/"
+            "vendor/bin/phpcbf --standard=PSR2 --extensions=php src/"
         ],
         "stan": [
-            "vendor/bin/phpstan analyse src/ --level 4"
+            "vendor/bin/phpstan analyse src/ --level max"
         ],
         "compatibility": [
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.1-",
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.2-",
-            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.3-"
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.1- src/",
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.2- src/",
+            "vendor/bin/phpcs -s --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility/ --runtime-set testVersion 8.3- src/"
         ],
         "test": [
             "@sniff",
             "@spec",
             "@stan",
-            "@compat"
+            "@compatibility"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

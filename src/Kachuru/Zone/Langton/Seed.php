@@ -2,10 +2,11 @@
 
 namespace Kachuru\Zone\Langton;
 
-use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 use Kachuru\Util\Combinations;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
+use Kachuru\Zone\Langton\Transition\AntTurn\AntTurnFactory;
 
-class Seed
+readonly class Seed
 {
     /**
      * The Seed, of the format ABBBBBCC
@@ -13,37 +14,32 @@ class Seed
      *   B: The transition configuration (00000-00023 or 00000-40319)
      *   C: The step-turn configuration to use (0-23)
      * e.g. 10001709, 23251413
-     *
-     * @var int $seedId The ID representing the seed
      */
-    private $seedId;
-
-    private $combinations;
-
-    private $antTurnFactory;
-
-    public function __construct(int $seed, Combinations $combinations, AntTurnFactory $antTurnFactory)
-    {
-        $this->seedId = $seed;
-        $this->combinations = $combinations;
-        $this->antTurnFactory = $antTurnFactory;
+    public function __construct(
+        private string $seed,
+        private Combinations $combinations,
+        private AntTurnFactory $antTurnFactory
+    ) {
     }
 
-    public function getSeedId()
+    public function getSeed(): string
     {
-        return $this->seedId;
+        return $this->seed;
     }
 
-    public static function getTransitionsRandomSeed()
+    public static function getTransitionsRandomSeed(): string
     {
         $set = mt_rand(1, 2);
 
-        return (int) sprintf('%d%05d%02d', $set, mt_rand(0, $set == 1 ? 23 : 40319), mt_rand(0, 23));
+        return sprintf('%d%05d%02d', $set, mt_rand(0, $set == 1 ? 23 : 40319), mt_rand(0, 23));
     }
 
+    /** @return array<int, int> */
     public function getMapTileStateTransitionOrder(): array
     {
-        return $this->combinations->calculate($this->getBaseTransitions(), $this->getTransitionSeedId());
+        /** @var array<int, int> $combinations */
+        $combinations = $this->combinations->calculate($this->getBaseTransitions(), $this->getTransitionSeedId());
+        return $combinations;
     }
 
     public function getFirstState(): int
@@ -51,30 +47,34 @@ class Seed
         return $this->getMapTileStateTransitionOrder()[0];
     }
 
+    /** @return array<int, int> */
     public function getBaseTransitions(): array
     {
-        return ($this->getTransitionSetId() == 1)
+        return $this->getTransitionSetId() === 1
             ? array_slice(MapTileWithState::TILE_STATES, 0, 4)
             : MapTileWithState::TILE_STATES;
     }
 
-    public function getAntTurnOrder()
+    /** @return array<int, AntTurn> */
+    public function getAntTurnOrder(): array
     {
-        return $this->combinations->calculate($this->antTurnFactory->getAntTurns(), $this->getAntTurnSeedId());
+        /** @var array<int, AntTurn> $combinations */
+        $combinations = $this->combinations->calculate($this->antTurnFactory->getAntTurns(), $this->getAntTurnSeedId());
+        return $combinations;
     }
 
-    private function getTransitionSetId()
+    private function getTransitionSetId(): int
     {
-        return (int) substr($this->seedId, 0, 1);
+        return (int) substr($this->seed, 0, 1);
     }
 
-    private function getTransitionSeedId()
+    private function getTransitionSeedId(): int
     {
-        return (int) substr($this->seedId, 1, 5);
+        return (int) substr($this->seed, 1, 5);
     }
 
-    private function getAntTurnSeedId()
+    private function getAntTurnSeedId(): int
     {
-        return (int) substr($this->seedId, 7, 2);
+        return (int) substr($this->seed, 7, 2);
     }
 }
