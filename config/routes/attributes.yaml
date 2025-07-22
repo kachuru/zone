@@ -1,9 +1,5 @@
 controllers:
   resource:
-    path: ../../src/Controller/
-    namespace: App\Controller
-  type: attribute
-
-kernel:
-  resource: App\Kernel
+    path: ../../src/Kachuru/Zone/Controller/
+    namespace: Kachuru\Zone\ZoneController
   type: attribute

@@ -1,6 +1,6 @@
 {
     "name": "kachuru/zone",
-    "type": "project",
+    "type": "symfony-bundle",
     "license": "proprietary",
     "description": "Zone",
     "require": {
@@ -37,14 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "Kachuru\\": "src/Kachuru/"
+            "Kachuru\\Zone\\": "src/Kachuru/Zone/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/",
-            "spec\\Kachuru\\": "spec/Kachuru/"
+            "spec\\Kachuru\\Zone\\": "spec/Kachuru/Zone/"
         }
     },
     "scripts": {
