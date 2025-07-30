@@ -2,26 +2,14 @@
 
 namespace Kachuru\Zone\Dto\Langton;
 
-class LangtonMove implements \JsonSerializable
+readonly class LangtonMove implements \JsonSerializable
 {
-    private $antStateOrientation;
-
-    private $antStateLocation;
-
-    private $updateTileLocation;
-
-    private $updateTileState;
-
     public function __construct(
-        string $antStateOrientation,
-        int $antStateLocation,
-        int $updateTileLocation,
-        string $updateTileState
+        private string $antStateOrientation,
+        private int $antStateLocation,
+        private int $updateTileLocation,
+        private string $updateTileState
     ) {
-        $this->antStateOrientation = $antStateOrientation;
-        $this->antStateLocation = $antStateLocation;
-        $this->updateTileLocation = $updateTileLocation;
-        $this->updateTileState = $updateTileState;
     }
 
     public function getAntStateOrientation(): string
@@ -43,7 +31,10 @@ class LangtonMove implements \JsonSerializable
     {
         return $this->updateTileState;
     }
-    
+
+    /**
+     * @return array<string, string|int>
+     */
     public function jsonSerialize(): array
     {
         return [

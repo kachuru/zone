@@ -6,13 +6,11 @@ use Kachuru\MapMaker\Map;
 use Kachuru\MapMaker\MapTile;
 use Kachuru\Zone\Langton\Transition\TransitionHandler;
 
-class MoveCalculator
+readonly class MoveCalculator
 {
-    private $transitionHandler;
-
-    public function __construct(TransitionHandler $transitionHandler)
-    {
-        $this->transitionHandler = $transitionHandler;
+    public function __construct(
+        private TransitionHandler $transitionHandler
+    ) {
     }
 
     public function getMove(Map $map, MapTileWithState $mapTileState, AntState $antState): LangtonMove
@@ -40,7 +38,7 @@ class MoveCalculator
         );
     }
 
-    private function getCurrentTileNewState($mapTileState): MapTileWithState
+    private function getCurrentTileNewState(MapTileWithState $mapTileState): MapTileWithState
     {
         return $this->transitionHandler->getMapTileNextState($mapTileState);
     }

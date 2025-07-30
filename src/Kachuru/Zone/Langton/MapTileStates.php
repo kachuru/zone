@@ -6,7 +6,8 @@ use Kachuru\MapMaker\MapTile;
 
 class MapTileStates
 {
-    private $tiles = [];
+    /** @var MapTileWithState[] $tiles */
+    private array $tiles = [];
 
     public function hasTile(int $tileId): bool
     {
@@ -18,7 +19,7 @@ class MapTileStates
         return $this->tiles[$tileId];
     }
 
-    public function setTile(MapTileWithState $mapTileWithState)
+    public function setTile(MapTileWithState $mapTileWithState): void
     {
         $this->tiles[$mapTileWithState->getTileId()] = $mapTileWithState;
     }

@@ -9,7 +9,8 @@ use Kachuru\Zone\Langton\Transition\AntTurn\AntTurn;
 
 class TransitionHandler
 {
-    private $stateTransitions = [];
+    /** @var StateTransition[] $stateTransitions */
+    private array $stateTransitions = [];
 
     public function __construct(Seed $seed)
     {
@@ -28,7 +29,7 @@ class TransitionHandler
         }
     }
 
-    public function addStateTransition(string $handle, StateTransition $stateTransition)
+    public function addStateTransition(string $handle, StateTransition $stateTransition): void
     {
         if ($this->transitionHandleIsSet($handle)) {
             throw new \RuntimeException(sprintf('State transition for state "%s" already exists', $handle));
@@ -56,7 +57,7 @@ class TransitionHandler
         return array_key_exists($handle, $this->stateTransitions);
     }
 
-    protected function getStateHandle(int $tileStateId)
+    protected function getStateHandle(int $tileStateId): string
     {
         return MapTileWithState::TILE_STATE_HANDLES[$tileStateId];
     }
@@ -66,7 +67,7 @@ class TransitionHandler
         return new StateTransition($antTurn, $nextStateId);
     }
 
-    private function getNextTransitionOffset($idx, $transitions): int
+    private function getNextTransitionOffset(int $idx, int $transitions): int
     {
         return ($idx + 1) < $transitions
             ? ($idx + 1)

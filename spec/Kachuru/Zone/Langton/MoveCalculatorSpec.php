@@ -25,7 +25,7 @@ class MoveCalculatorSpec extends ObjectBehavior
     function let()
     {
         $this->beConstructedWith(
-            new TransitionHandler(new Seed(10000000, new Combinations(new Math()), new AntTurnFactory()))
+            new TransitionHandler(new Seed("10000000", new Combinations(new Math()), new AntTurnFactory()))
         );
     }
 
