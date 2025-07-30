@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/zone/css/map.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/zone/css/langton.css') }}" />
+{%  endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('/bundles/zone/js/shared.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/zone/js/map.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div id="map-data">
+        <div><span class="heading">Seed:</span><span id="seed-id">{{ seedId }}</span></div>
+        <div><span class="heading">Steps Taken:</span><span id="ant-steps-limit">{{ steps }}</span></div>
+    </div>
+
+    <div class="map">
+{% for tile in map.mapTiles %}
+    <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-grid tile-state-{% if tile.state is defined %}{{ tile.stateHandle }}{% else %}none{% endif %}"
+         style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;">
+
+        <div id="tile-{{ tile.tileId }}-inner" class="tile-inner"
+             onClick="alert('T{{ tile.tileId }} - {{ tile.coordinates }}')">
+        </div>
+
+    </div>
+{% endfor %}
+    </div>
+
+{% endblock %}

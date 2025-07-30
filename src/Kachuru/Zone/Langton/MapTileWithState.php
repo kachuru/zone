@@ -5,7 +5,7 @@ namespace Kachuru\Zone\Langton;
 use Kachuru\MapMaker\MapTile;
 use Kachuru\MapMaker\MapCoordinates;
 
-class MapTileWithState implements MapTile
+readonly class MapTileWithState implements MapTile
 {
     public const TILE_STATE_ALPHA = 0;
     public const TILE_STATE_BETA = 1;
@@ -38,19 +38,13 @@ class MapTileWithState implements MapTile
         self::TILE_STATE_THETA => 'theta',
     ];
 
-    private $mapTile;
-
-    private $state;
-
-    public function __construct(MapTile $mapTile, int $state)
-    {
-        $this->mapTile = $mapTile;
-
+    public function __construct(
+        private MapTile $mapTile,
+        private int $state
+    ) {
         if (!in_array($state, self::TILE_STATES)) {
             throw new \InvalidArgumentException('Invalid tile state provided');
         }
-
-        $this->state = $state;
     }
 
     public function getMapTile(): MapTile

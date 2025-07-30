@@ -6,21 +6,16 @@ use Kachuru\MapMaker\MapCoordinates;
 use Kachuru\MapMaker\MapGrid;
 use Kachuru\MapMaker\MapTile;
 
-class StatefulMap implements MapWithState
+readonly class StatefulMap implements MapWithState
 {
-    private $mapStencil;
-
-    private $mapTileStates;
-
-    private $seed;
-
-    public function __construct(MapGrid $mapStencil, MapTileStates $mapTileStates, Seed $seed)
-    {
-        $this->mapStencil = $mapStencil;
-        $this->mapTileStates = $mapTileStates;
-        $this->seed = $seed;
+    public function __construct(
+        private MapGrid $mapStencil,
+        private MapTileStates $mapTileStates,
+        private Seed $seed
+    ) {
     }
 
+    /** @return iterable<int, MapTile> */
     public function getMapTiles(): iterable
     {
         for ($tileId = 0; $tileId < $this->mapStencil->getMapSize(); $tileId++) {
@@ -54,6 +49,7 @@ class StatefulMap implements MapWithState
         return $this->mapStencil->getCentreTile();
     }
 
+    /** @return iterable<int, int> */
     public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable
     {
         return $this->mapStencil->getAdjacentTiles($mapCoordinates);

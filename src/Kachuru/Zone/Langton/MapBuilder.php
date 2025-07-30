@@ -8,5 +8,5 @@ interface MapBuilder
 {
     public function build(MapWithState $map, int $steps): Map;
 
-    public function move(Map $map, MapTileWithState $mapTileWithState, AntState $antState);
+    public function move(Map $map, MapTileWithState $mapTileWithState, AntState $antState): LangtonMove;
 }

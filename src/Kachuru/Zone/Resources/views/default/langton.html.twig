@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/bundles/zone/css/map.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/zone/css/langton.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('/bundles/zone/js/shared.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/zone/js/langton.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div id="ant-location">
+        <div><span class="heading">Seed:</span><span id="seed">{{ seed }}</span></div>
+        <div><span class="heading">Current Tile:</span><span id="ant-location-tile-id">{{ initial.tileId }}</span></div>
+        <div><span class="heading">Current Direction:</span><span id="ant-location-orientation">n</span></div>
+        <div><span class="heading">Steps Taken:</span><span id="ant-steps-taken">0</span>/<span id="ant-steps-limit">{{ steps }}</span></div>
+    </div>
+
+    <div class="map">
+        {% for tile in map.mapTiles %}
+        <div id="tile-{{ tile.tileId }}-outer" class="tile-outer tile-state-none"
+             style="left: {{ tile.coordinates|xpos }}px; top: {{ tile.coordinates|ypos }}px;"{% if tile.tileId == 0 %} onClick="$('#ant-location').css('visibility', 'visible');"{% endif %}>
+            <div id="tile-{{ tile.tileId }}-inner" class="tile-inner{% if tile.coordinates == initial.coordinates %} ant ant-orient-n{% endif %}"></div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -22,18 +22,20 @@ class SeededMapBuilder implements MapBuilder
         return $this->moveCalculator->getMove($map, $mapTileWithState, $antState);
     }
 
-    public function build(MapWithState $map, $steps): Map
+    public function build(MapWithState $map, int $steps): Map
     {
         $antState = new AntState(Map::DIRECTION_NORTH);
         $mapTileWithState = $this->getMapTileWithState($map->getCentreTile());
 
-        for ($step = 0; $step <= $steps; $step++) {
+        for ($step = 1; $step <= $steps; $step++) {
             $langtonMove = $this->move($map, $mapTileWithState, $antState);
 
             $map->updateTile($langtonMove->getOldLocationUpdatedState());
 
             $antState = $langtonMove->getAntNewState();
-            $mapTileWithState = $map->getMapTileByTileId($langtonMove->getNewLocation()->getTileId());
+            $mapTileWithState = $this->getMapTileWithState(
+                $map->getMapTileByTileId($langtonMove->getNewLocation()->getTileId())
+            );
         }
 
         return $map;

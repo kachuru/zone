@@ -4,7 +4,8 @@ namespace Kachuru\Zone\Langton\Transition\AntTurn;
 
 class AntTurnFactory
 {
-    public function getAntTurns()
+    /** @return AntTurn[] */
+    public function getAntTurns(): array
     {
         return [
             new AntTurnClockwiseOnce(),
