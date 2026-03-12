@@ -18,14 +18,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    Kachuru\Zone\:
-        resource: '../src/Kachuru/Zone/*'
-
     Kachuru\Util\:
         resource: '../vendor/kachuru/util/src/Kachuru/Util/*'
 
     Kachuru\MapMaker\:
         resource: '../vendor/kachuru/map-maker/src/Kachuru/MapMaker/*'
+
+    Kachuru\Zone\:
+        resource: '../src/Kachuru/Zone/*'
 
     Kachuru\MapMaker\MapSize:
         class: Kachuru\MapMaker\MapSize

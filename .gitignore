@@ -1,6 +1,7 @@
 bin/
 !bin/console
 composer.phar
+composer.lock
 .idea/
 cache/
 vendor/

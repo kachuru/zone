@@ -1,0 +1,19 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Offset bool\|float\|int\|string\|null might not exist on array\{alpha\: 0, beta\: 1, gamma\: 2, delta\: 3, epsilon\: 4, zeta\: 5, eta\: 6, theta\: 7\}\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/Kachuru/Zone/Controller/ZoneController.php
+
+		-
+			message: '#^Offset bool\|float\|int\|string\|null might not exist on array\{n\: 1, ne\: 2, se\: 3, s\: 4, sw\: 5, nw\: 6\}\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/Kachuru/Zone/Controller/ZoneController.php
+
+		-
+			message: '#^Possibly invalid array key type bool\|float\|int\|string\|null\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
+			path: src/Kachuru/Zone/Controller/ZoneController.php
