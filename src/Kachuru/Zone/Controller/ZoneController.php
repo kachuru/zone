@@ -19,7 +19,7 @@ class ZoneController extends AbstractController
 {
     #[Route('/map', name: 'map')]
     #[Route('/map/{seed}', name: 'map_with_seed', requirements: ['seed' => '\d+'])]
-    public function map(LangtonFactory $langtonFactory, string $seed = null): Response
+    public function map(LangtonFactory $langtonFactory, ?string $seed = null): Response
     {
         $seed = $langtonFactory->getSeed($seed ?? Seed::getTransitionsRandomSeed());
         $map = $langtonFactory->getStatefulMap($seed);
@@ -58,7 +58,7 @@ class ZoneController extends AbstractController
 
     #[Route('/langton', name: 'langton')]
     #[Route('/langton/{seed}', name: 'langton_with_seed', requirements: ['seed' => '\d+'])]
-    public function langton(LangtonFactory $langtonFactory, string $seed = null): Response
+    public function langton(LangtonFactory $langtonFactory, ?string $seed = null): Response
     {
         $seed = $langtonFactory->getSeed($seed ?? Seed::getTransitionsRandomSeed());
         $map = $langtonFactory->getMapStencil();

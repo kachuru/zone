@@ -49,8 +49,7 @@ readonly class StatefulMap implements MapWithState
         return $this->mapStencil->getCentreTile();
     }
 
-    /** @return iterable<int, int> */
-    public function getAdjacentTiles(MapCoordinates $mapCoordinates): iterable
+    public function getAdjacentTiles(MapCoordinates $mapCoordinates): \Generator
     {
         return $this->mapStencil->getAdjacentTiles($mapCoordinates);
     }

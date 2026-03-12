@@ -55,10 +55,10 @@ readonly class Seed
             : MapTileWithState::TILE_STATES;
     }
 
-    /** @return array<int, AntTurn> */
+    /** @return AntTurn[] */
     public function getAntTurnOrder(): array
     {
-        /** @var array<int, AntTurn> $combinations */
+        /** @var AntTurn[] $combinations */
         $combinations = $this->combinations->calculate($this->antTurnFactory->getAntTurns(), $this->getAntTurnSeedId());
         return $combinations;
     }
