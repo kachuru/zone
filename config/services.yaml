@@ -19,10 +19,10 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     Kachuru\Util\:
-        resource: '../vendor/kachuru/util/src/Kachuru/Util/*'
+        resource: '%kernel.project_dir%/vendor/kachuru/util/src/Kachuru/Util/*'
 
     Kachuru\MapMaker\:
-        resource: '../vendor/kachuru/map-maker/src/Kachuru/MapMaker/*'
+        resource: '%kernel.project_dir%/vendor/kachuru/map-maker/src/Kachuru/MapMaker/*'
 
     Kachuru\Zone\:
         resource: '../src/Kachuru/Zone/*'
